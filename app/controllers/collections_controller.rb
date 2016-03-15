@@ -1,5 +1,7 @@
 class CollectionsController < ApplicationController
+  before_action :find_application
   before_action :set_collection, only: [:show, :edit, :update, :destroy]
+  before_filter :authenticate_user!
 
   # GET /collections
   # GET /collections.json
@@ -62,6 +64,9 @@ class CollectionsController < ApplicationController
   end
 
   private
+    def find_application
+      @application = Application.find(params[:application_id])
+    end
     # Use callbacks to share common setup or constraints between actions.
     def set_collection
       @collection = Collection.find(params[:id])

@@ -1,5 +1,6 @@
 class ApplicationsController < ApplicationController
   before_action :set_application, only: [:show, :edit, :update, :destroy]
+  before_filter :authenticate_user!
 
   # GET /applications
   # GET /applications.json

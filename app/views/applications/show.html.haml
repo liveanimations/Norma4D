@@ -6,5 +6,8 @@
       Name:
     = @application.name
 
+  %p= link_to 'Create Effect', new_application_effect_path(@application)
+  %p= link_to 'Create Collection', new_application_collection_path(@application)
+
   = link_to 'Edit', edit_application_path(@application) |
   = link_to 'Back', applications_path

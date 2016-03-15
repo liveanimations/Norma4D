@@ -1,5 +1,7 @@
 class EffectsController < ApplicationController
+  before_action :find_application
   before_action :set_effect, only: [:show, :edit, :update, :destroy]
+  before_filter :authenticate_user!
 
   # GET /effects
   # GET /effects.json
@@ -28,7 +30,7 @@ class EffectsController < ApplicationController
 
     respond_to do |format|
       if @effect.save
-        format.html { redirect_to @effect, notice: 'Effect was successfully created.' }
+        format.html { redirect_to [@application, @effect], notice: 'Effect was successfully created.' }
         format.json { render :show, status: :created, location: @effect }
       else
         format.html { render :new }
@@ -62,6 +64,9 @@ class EffectsController < ApplicationController
   end
 
   private
+    def find_application
+      @application = Application.find(params[:application_id])
+    end
     # Use callbacks to share common setup or constraints between actions.
     def set_effect
       @effect = Effect.find(params[:id])
