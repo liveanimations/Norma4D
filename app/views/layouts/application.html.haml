@@ -1,0 +1,45 @@
+!!!
+%html
+
+  %head
+    %title= 'Norma4D'
+    = stylesheet_link_tag    'application', media: 'all'
+    = javascript_include_tag 'application'
+    = csrf_meta_tags
+
+  %body
+    %nav.navbar.navbar-default.navbar-static-top
+      .container
+        .pull-left
+        .navbar-header
+          %a.navbar-brand{ href: applications_path }= 'Norma4D'
+
+        %ul.nav.navbar-nav
+          %li= link_to 'Apllications', applications_path
+
+        %ul.nav.navbar-nav.navbar-right
+          - if current_user
+            %li.dropdown
+              %a.dropdown-toggle{'data-toggle': 'dropdown', href: '#'}
+                = current_user.email
+                %b.caret
+              %ul.dropdown-menu
+                %li= link_to 'Log out', destroy_user_session_path, method: :delete
+          - else
+            %li= link_to 'Sign up', new_user_registration_path
+            %li= link_to 'Log in', new_user_session_path
+
+    .container
+
+      - if notice
+        %p.alert.alert-info= notice
+      - if alert
+        %p.alert.alert-warning= alert
+      - if flash[:error]
+        %p.alert.alert-danger= flash[:error]
+
+      = yield
+
+    / %footer.footer
+    /   .container
+    /     %p.text-muted= 'Place sticky footer content here.'
