@@ -6,6 +6,7 @@ one:
   version: 1
   description_ru: MyText
   description_en: MyText
+  application: one
 
 two:
   name_ru: MyString
@@ -13,3 +14,4 @@ two:
   version: 1
   description_ru: MyText
   description_en: MyText
+  application: one

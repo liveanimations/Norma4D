@@ -3,3 +3,14 @@
  */
 @import "bootstrap-sprockets";
 @import "bootstrap";
+
+th, td {
+  &.thin-column {
+    width: 1%;
+  }
+}
+
+.mt-20 {
+  margin-top: 20px;
+}
+

@@ -1,8 +1,9 @@
 require 'test_helper'
 
-class ApplicationsControllerTest < ActionController::TestCase
+class ApplicationsControllerTest < ControllerTest
   setup do
     @application = applications(:one)
+    sign_in users(:one)
   end
 
   test "should get index" do
@@ -35,7 +36,8 @@ class ApplicationsControllerTest < ActionController::TestCase
   end
 
   test "should update application" do
-    patch :update, id: @application, application: { name: @application.name }
+    patch :update, id: @application, application: { name: 'Name' }
+    assert_equal 'Name', @application.reload.name
     assert_redirected_to application_path(assigns(:application))
   end
 
@@ -43,7 +45,6 @@ class ApplicationsControllerTest < ActionController::TestCase
     assert_difference('Application.count', -1) do
       delete :destroy, id: @application
     end
-
     assert_redirected_to applications_path
   end
 end

@@ -18,6 +18,7 @@ gem 'devise'
 gem 'bootstrap-sass'
 gem 'bootstrap-wysihtml5-rails'
 gem 'haml'
+gem 'responders'
 
 # Use jquery as the JavaScript library
 gem 'jquery-rails'
@@ -38,8 +39,14 @@ gem 'sdoc', '~> 0.4.0', group: :doc
 # gem 'capistrano-rails', group: :development
 
 group :development, :test do
-  # Call 'byebug' anywhere in the code to stop execution and get a debugger console
   gem 'byebug'
+  gem 'webmock'
+  gem 'mocha'
+  gem 'minitest-reporters'
+  gem 'minitest-stub-const'
+  gem 'minitest-rails-capybara'
+  gem 'poltergeist'
+  gem 'phantomjs', require: 'phantomjs/poltergeist'
 end
 
 group :development do
