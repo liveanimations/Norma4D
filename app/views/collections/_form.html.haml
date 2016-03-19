@@ -1,37 +1,37 @@
-= form_for [@application, @collection] do |f|
-  - if @collection.errors.any?
-    #error_explanation
-      %h2
-        = pluralize(@collection.errors.count, "error")
-        prohibited this collection from being saved:
+= simple_form_for [@application, @collection] do |f|
+  = f.error_notification
+  - if f.object.errors.any?
+    %ul
+      - f.object.errors.full_messages.each do |msg|
+        %li= msg
 
-      %ul
-      - @collection.errors.full_messages.each do |message|
-        %li= message
+  .row.form-group
+    .col-md-4
+      = f.label :name_ru
+      = f.input_field :name_ru, class: 'form-control'
 
-  .field
-    = f.label :price
-    %br
-    = f.text_field :price
-  .field
-    = f.label :name_ru
-    %br
-    = f.text_field :name_ru
-  .field
-    = f.label :name_en
-    %br
-    = f.text_field :name_en
-  .field
-    = f.label :version
-    %br
-    = f.number_field :version
-  .field
-    = f.label :description_ru
-    %br
-    = f.text_area :description_ru
-  .field
-    = f.label :description_en
-    %br
-    = f.text_area :description_en
-  .actions
-    = f.submit
+  .row.form-group
+    .col-md-4
+      = f.label :name_en
+      = f.input_field :name_en, class: 'form-control'
+
+  .row.form-group
+    .col-md-4
+      = f.label :version
+      = f.input_field :version, as: :integer, class: 'form-control', input_html: { min: 1 }
+
+  .row.form-group
+    .col-md-4
+      = f.label :description_ru
+      = f.input_field :description_ru, as: :text, class: 'form-control'
+
+  .row.form-group
+    .col-md-4
+      = f.label :description_en
+      = f.input_field :description_en, as: :text, class: 'form-control'
+
+  .row.form-group
+    .col-md-12
+      = f.button :submit
+      = link_to 'Cancel', @application, class: 'btn btn-default'
+

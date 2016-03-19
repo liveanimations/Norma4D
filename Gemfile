@@ -19,6 +19,7 @@ gem 'bootstrap-sass'
 gem 'bootstrap-wysihtml5-rails'
 gem 'haml'
 gem 'responders'
+gem 'simple_form'
 
 # Use jquery as the JavaScript library
 gem 'jquery-rails'

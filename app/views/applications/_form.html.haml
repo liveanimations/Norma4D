@@ -1,19 +1,15 @@
-.container
-  = form_for(@application) do |f|
-    - if @application.errors.any?
-      #error_explanation
-        %h2
-          = pluralize(@application.errors.count, "error")
-          prohibited this application from being saved:
+= simple_form_for(@application) do |f|
+  = f.error_notification
+  - if f.object.errors.any?
+    %ul
+      - f.object.errors.full_messages.each do |msg|
+        %li= msg
 
-        %ul
-          @application.errors.full_messages.each do |message|
-          %li= message
+  .row.form-group
+    .col-md-4
+      = f.input_field :name, class: 'form-control'
 
-    .field
-      = f.label :name
-      %br
-      = f.text_field :name
-
-    .actions
-      = f.submit
+  .row.form-group
+    .col-md-12
+      = f.button :submit
+      = link_to 'Cancel', applications_path, class: 'btn btn-default'
