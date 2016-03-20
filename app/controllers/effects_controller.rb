@@ -21,7 +21,7 @@ class EffectsController < ApplicationController
   end
 
   def update
-    @effect.update(effect_params)
+    @effect.update(effect_params.merge(version: @effect.version + 1))
     respond_with(@application, @effect)
   end
 
@@ -40,6 +40,6 @@ class EffectsController < ApplicationController
     end
 
     def effect_params
-      params.require(:effect).permit(:name_ru, :name_en, :version, :description_ru, :description_en)
+      params.require(:effect).permit(:name_ru, :name_en, :description_ru, :description_en)
     end
 end

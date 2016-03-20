@@ -21,7 +21,7 @@ class CollectionsController < ApplicationController
   end
 
   def update
-    @collection.update(collection_params)
+    @collection.update(collection_params.merge(version: @collection.version + 1))
     respond_with(@application, @collection)
   end
 
@@ -40,6 +40,6 @@ class CollectionsController < ApplicationController
     end
 
     def collection_params
-      params.require(:collection).permit(:price, :name_ru, :name_en, :version, :description_ru, :description_en)
+      params.require(:collection).permit(:price, :name_ru, :name_en, :description_ru, :description_en)
     end
 end

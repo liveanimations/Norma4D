@@ -24,8 +24,7 @@ class CollectionsControllerTest < ControllerTest
           description_ru: @collection.description_ru,
           name_en: @collection.name_en,
           name_ru: @collection.name_ru,
-          price: @collection.price,
-          version: @collection.version
+          price: @collection.price
         }
       )
     end
@@ -51,10 +50,10 @@ class CollectionsControllerTest < ControllerTest
           description_ru: @collection.description_ru,
           name_en: @collection.name_en,
           name_ru: @collection.name_ru,
-          price: @collection.price,
-          version: @collection.version
+          price: @collection.price
         }
       )
+    assert_equal @collection.version + 1, @collection.reload.version
     assert_redirected_to application_collection_path(@application, assigns(:collection))
   end
 

@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160314232407) do
+ActiveRecord::Schema.define(version: 20160320083932) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -32,11 +32,11 @@ ActiveRecord::Schema.define(version: 20160314232407) do
     t.decimal  "price"
     t.string   "name_ru"
     t.string   "name_en"
-    t.integer  "version"
+    t.integer  "version",        default: 1
     t.text     "description_ru"
     t.text     "description_en"
-    t.datetime "created_at",     null: false
-    t.datetime "updated_at",     null: false
+    t.datetime "created_at",                 null: false
+    t.datetime "updated_at",                 null: false
     t.integer  "application_id"
   end
 
@@ -45,11 +45,11 @@ ActiveRecord::Schema.define(version: 20160314232407) do
   create_table "effects", force: :cascade do |t|
     t.string   "name_ru"
     t.string   "name_en"
-    t.integer  "version"
+    t.integer  "version",        default: 1
     t.text     "description_ru"
     t.text     "description_en"
-    t.datetime "created_at",     null: false
-    t.datetime "updated_at",     null: false
+    t.datetime "created_at",                 null: false
+    t.datetime "updated_at",                 null: false
     t.integer  "application_id"
   end
 

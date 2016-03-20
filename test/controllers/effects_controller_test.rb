@@ -23,8 +23,7 @@ class EffectsControllerTest < ControllerTest
           description_en: @effect.description_en,
           description_ru: @effect.description_ru,
           name_en: @effect.name_en,
-          name_ru: @effect.name_ru,
-          version: @effect.version
+          name_ru: @effect.name_ru
         }
       )
     end
@@ -49,10 +48,10 @@ class EffectsControllerTest < ControllerTest
           description_en: @effect.description_en,
           description_ru: @effect.description_ru,
           name_en: @effect.name_en,
-          name_ru: @effect.name_ru,
-          version: @effect.version
+          name_ru: @effect.name_ru
         }
       )
+    assert_equal @effect.version + 1, @effect.reload.version
     assert_redirected_to application_effect_path(@application, assigns(:effect))
   end
 
