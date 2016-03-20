@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160320091923) do
+ActiveRecord::Schema.define(version: 20160320160312) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -27,6 +27,17 @@ ActiveRecord::Schema.define(version: 20160320091923) do
 
   add_index "applications", ["collection_id"], name: "index_applications_on_collection_id", using: :btree
   add_index "applications", ["effect_id"], name: "index_applications_on_effect_id", using: :btree
+
+  create_table "attachments", force: :cascade do |t|
+    t.string   "name"
+    t.string   "file"
+    t.integer  "attachmentable_id"
+    t.string   "attachmentable_type"
+    t.datetime "created_at",          null: false
+    t.datetime "updated_at",          null: false
+  end
+
+  add_index "attachments", ["attachmentable_type", "attachmentable_id"], name: "index_attachments_on_attachmentable_type_and_attachmentable_id", using: :btree
 
   create_table "collections", force: :cascade do |t|
     t.decimal  "price"

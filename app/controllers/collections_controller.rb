@@ -9,7 +9,7 @@ class CollectionsController < ApplicationController
   end
 
   def new
-    @collection = Collection.new
+    @collection = @application.collections.new
   end
 
   def edit
@@ -40,6 +40,8 @@ class CollectionsController < ApplicationController
     end
 
     def collection_params
-      params.require(:collection).permit(:price, :name_ru, :name_en, :description_ru, :description_en)
+      params.require(:collection).permit(
+        :price, :name_ru, :name_en, :description_ru, :description_en, attachments_attributes: [:id, :file, :name]
+      )
     end
 end

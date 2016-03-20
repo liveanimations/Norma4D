@@ -4,26 +4,36 @@
     %ul
       - f.object.errors.full_messages.each do |msg|
         %li= msg
-
-  .row.form-group
+  .row
     .col-md-4
-      = f.label :name_ru
-      = f.input_field :name_ru, class: 'form-control'
+      .row.form-group
+        .col-md-12
+          = f.label :name_ru
+          = f.input_field :name_ru, class: 'form-control'
 
-  .row.form-group
-    .col-md-4
-      = f.label :name_en
-      = f.input_field :name_en, class: 'form-control'
+      .row.form-group
+        .col-md-12
+          = f.label :name_en
+          = f.input_field :name_en, class: 'form-control'
 
-  .row.form-group
-    .col-md-4
-      = f.label :description_ru
-      = f.input_field :description_ru, as: :text, class: 'form-control'
+      .row.form-group
+        .col-md-12
+          = f.label :description_ru
+          = f.input_field :description_ru, as: :text, class: 'form-control'
 
-  .row.form-group
-    .col-md-4
-      = f.label :description_en
-      = f.input_field :description_en, as: :text, class: 'form-control'
+      .row.form-group
+        .col-md-12
+          = f.label :description_en
+          = f.input_field :description_en, as: :text, class: 'form-control'
+    .col-md-8
+      .row.form-group
+        .col-md-12
+          %h3 Files:
+          #tasks
+            = f.simple_fields_for :attachments do |file|
+              = render 'attachment_fields', f: file
+            .links
+              = link_to_add_association 'Add File', f, :attachments, class: 'btn btn-primary'
 
   .row.form-group
     .col-md-12
