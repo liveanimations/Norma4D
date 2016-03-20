@@ -17,6 +17,9 @@
 
   .row.form-group
     .col-md-4
+      = f.association :collection, collection: @application.collections.order(:name_ru), label_method: :name_ru, value_method: :id, prompt: "Choose a Collection"
+  .row.form-group
+    .col-md-4
       = f.label :description_ru
       = f.input_field :description_ru, as: :text, class: 'form-control'
 
