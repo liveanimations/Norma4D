@@ -24,8 +24,11 @@
       %span.h4= 'Version: '
       = @collection.version
   .col-md-6
-    - @collection.attachments.each do |attachment|
-      %p= attachment.file.file.original_filename
+    .panel
+      %h3= 'Files:'
+      %ul
+        - @collection.attachments.each do |attachment|
+          %li= attachment.file.file.original_filename
 
 = link_to 'Edit', edit_application_collection_path(@application, @collection), class: 'btn btn-default'
 = link_to 'Back', @application, class: 'btn btn-link'
