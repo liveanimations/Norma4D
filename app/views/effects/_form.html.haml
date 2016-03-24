@@ -5,31 +5,79 @@
       - f.object.errors.full_messages.each do |msg|
         %li= msg
 
-  .row.form-group
+  .row
     .col-md-4
-      = f.label :name_ru
-      = f.input_field :name_ru, class: 'form-control'
+      .row.form-group
+        .col-md-12
+          = f.label :name_ru
+          = f.input_field :name_ru, class: 'form-control'
 
-  .row.form-group
-    .col-md-4
-      = f.label :name_en
-      = f.input_field :name_en, class: 'form-control'
+      .row.form-group
+        .col-md-12
+          = f.label :name_en
+          = f.input_field :name_en, class: 'form-control'
 
-  .row.form-group
-    .col-md-4
-      = f.association :collection, collection: @application.collections.order(:name_ru), label_method: :name_ru, value_method: :id, prompt: "Choose a Collection"
-  .row.form-group
-    .col-md-4
-      = f.label :description_ru
-      = f.input_field :description_ru, as: :text, class: 'form-control'
+      .row.form-group
+        .col-md-12
+          = f.association :collection, collection: @application.collections.order(:name_ru), label_method: :name_ru, value_method: :id, prompt: "Choose a Collection"
+      .row.form-group
+        .col-md-12
+          = f.label :description_ru
+          = f.input_field :description_ru, as: :text, class: 'form-control'
 
-  .row.form-group
-    .col-md-4
-      = f.label :description_en
-      = f.input_field :description_en, as: :text, class: 'form-control'
+      .row.form-group
+        .col-md-12
+          = f.label :description_en
+          = f.input_field :description_en, as: :text, class: 'form-control'
+
+    .col-md-8
+      .row.form-group
+        .col-md-12
+          %h3 Files:
+          .row.form-group
+            .col-md-4
+              = f.input :small_icon, as: :file
+            .col-md-8
+              #small_icon
+                - if f.object.small_icon_file_name
+                  = image_tag f.object.small_icon.url(:thumb), class: 'img-rounded'
+
+          .row.form-group
+            .col-md-4
+              = f.input :small_icon_2, as: :file
+            .col-md-8
+              #small_icon_2
+                - if f.object.small_icon_2_file_name
+                  = image_tag f.object.small_icon_2.url(:thumb), class: 'img-rounded'
+          .row.form-group
+            .col-md-4
+              = f.input :large_icon, as: :file
+            .col-md-8
+              #large_icon
+                - if f.object.large_icon_file_name
+                  = image_tag f.object.large_icon.url(:thumb), class: 'img-rounded'
+          .row.form-group
+            .col-md-4
+              = f.input :large_icon_2, as: :file
+            .col-md-8
+              #large_icon_2
+                - if f.object.large_icon_2_file_name
+                  = image_tag f.object.large_icon_2.url(:thumb), class: 'img-rounded'
+
+          .row.form-group
+            .col-md-4
+              = f.input :assets, as: :file
+            .col-md-8
+              %h4= @effect.assets_file_name
+
+          .row.form-group
+            .col-md-4
+              = f.input :files, as: :file
+            .col-md-8
+              %h4= @effect.files_file_name
 
   .row.form-group
     .col-md-12
-      = f.button :submit
+      = f.button :submit, class: 'btn btn-primary'
       = link_to 'Cancel', @application, class: 'btn btn-default'
 

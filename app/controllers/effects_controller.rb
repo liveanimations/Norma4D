@@ -40,6 +40,18 @@ class EffectsController < ApplicationController
     end
 
     def effect_params
-      params.require(:effect).permit(:name_ru, :name_en, :description_ru, :description_en, :collection_id)
+      params.require(:effect).permit(
+        :name_ru,
+        :name_en,
+        :description_ru,
+        :description_en,
+        :collection_id,
+        :small_icon,
+        :small_icon_2,
+        :large_icon,
+        :large_icon_2,
+        :assets,
+        :files
+      )
     end
 end

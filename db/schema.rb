@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160324150856) do
+ActiveRecord::Schema.define(version: 20160324220902) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -61,13 +61,37 @@ ActiveRecord::Schema.define(version: 20160324150856) do
   create_table "effects", force: :cascade do |t|
     t.string   "name_ru"
     t.string   "name_en"
-    t.integer  "version",        default: 1
+    t.integer  "version",                   default: 1
     t.text     "description_ru"
     t.text     "description_en"
-    t.datetime "created_at",                 null: false
-    t.datetime "updated_at",                 null: false
+    t.datetime "created_at",                            null: false
+    t.datetime "updated_at",                            null: false
     t.integer  "application_id"
     t.integer  "collection_id"
+    t.string   "small_icon_file_name"
+    t.string   "small_icon_content_type"
+    t.integer  "small_icon_file_size"
+    t.datetime "small_icon_updated_at"
+    t.string   "small_icon_2_file_name"
+    t.string   "small_icon_2_content_type"
+    t.integer  "small_icon_2_file_size"
+    t.datetime "small_icon_2_updated_at"
+    t.string   "large_icon_file_name"
+    t.string   "large_icon_content_type"
+    t.integer  "large_icon_file_size"
+    t.datetime "large_icon_updated_at"
+    t.string   "large_icon_2_file_name"
+    t.string   "large_icon_2_content_type"
+    t.integer  "large_icon_2_file_size"
+    t.datetime "large_icon_2_updated_at"
+    t.string   "assets_file_name"
+    t.string   "assets_content_type"
+    t.integer  "assets_file_size"
+    t.datetime "assets_updated_at"
+    t.string   "files_file_name"
+    t.string   "files_content_type"
+    t.integer  "files_file_size"
+    t.datetime "files_updated_at"
   end
 
   add_index "effects", ["application_id"], name: "index_effects_on_application_id", using: :btree

@@ -1,0 +1,43 @@
+.row
+  .col-md-4.mt-20
+    %p
+      %span.h4= 'Name ru: '
+      = @effect.name_ru
+
+    %p
+      %span.h4= 'Name en: '
+      = @effect.name_en
+
+    %p
+      %span.h4= 'Description ru: '
+      = @effect.description_ru
+
+    %p
+      %span.h4= 'Description en: '
+      = @effect.description_en
+
+    - if @effect.collection
+      %p
+        %span.h4= 'Collection:'
+        = @effect.collection.name_ru
+
+    %p
+      %span.h4= 'Version: '
+      = @effect.version
+  .col-md-8.panel
+    .row.panel
+      %h3= 'Icons:'
+      = image_tag @effect.small_icon.url(:thumb), class: 'img-rounded'
+      = image_tag @effect.small_icon_2.url(:thumb), class: 'img-rounded'
+      = image_tag @effect.large_icon.url(:thumb), class: 'img-rounded'
+      = image_tag @effect.large_icon_2.url(:thumb), class: 'img-rounded'
+    .row
+      %h3= 'Assets:'
+      %p= @effect.assets_file_name
+    .row
+      %h3= 'Files:'
+      %p= @effect.files_file_name
+
+= link_to 'Edit', edit_application_effect_path(@application, @effect), class: 'btn btn-default'
+= link_to 'Back', @application, class: 'btn btn-link'
+

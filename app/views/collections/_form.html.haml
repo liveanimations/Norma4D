@@ -25,13 +25,19 @@
         .col-md-12
           = f.label :description_en
           = f.input_field :description_en, as: :text, class: 'form-control'
+
+      .row.form-group
+        .col-md-12
+          = f.label :price
+          = f.input_field :price, class: 'form-control'
+
     .col-md-8
       .row.form-group
         .col-md-12
           %h3 Files:
           .row.form-group
             .col-md-4
-              = f.input :small_icon, as: :file, required: true
+              = f.input :small_icon, as: :file
             .col-md-8
               #small_icon
                 - if f.object.small_icon_file_name
@@ -39,21 +45,21 @@
 
           .row.form-group
             .col-md-4
-              = f.input :small_icon_2, as: :file, required: true
+              = f.input :small_icon_2, as: :file
             .col-md-8
               #small_icon_2
                 - if f.object.small_icon_2_file_name
                   = image_tag f.object.small_icon_2.url(:thumb), class: 'img-rounded'
           .row.form-group
             .col-md-4
-              = f.input :large_icon, as: :file, required: true
+              = f.input :large_icon, as: :file
             .col-md-8
               #large_icon
                 - if f.object.large_icon_file_name
                   = image_tag f.object.large_icon.url(:thumb), class: 'img-rounded'
           .row.form-group
             .col-md-4
-              = f.input :large_icon_2, as: :file, required: true
+              = f.input :large_icon_2, as: :file
             .col-md-8
               #large_icon_2
                 - if f.object.large_icon_2_file_name
