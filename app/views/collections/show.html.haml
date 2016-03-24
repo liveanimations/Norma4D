@@ -1,5 +1,5 @@
 .row
-  .col-md-6
+  .col-md-4
     %p
       %h4= 'Price: '
       = @collection.price
@@ -23,12 +23,14 @@
     %p
       %span.h4= 'Version: '
       = @collection.version
-  .col-md-6
+  .col-md-8
     .panel
       %h3= 'Files:'
-      %ul
-        - @collection.attachments.each do |attachment|
-          %li= attachment.file.file.original_filename
+      .bs-example-images
+        = image_tag @collection.small_icon.url(:thumb), class: 'img-rounded'
+        = image_tag @collection.small_icon_2.url(:thumb), class: 'img-rounded'
+        = image_tag @collection.large_icon.url(:thumb), class: 'img-rounded'
+        = image_tag @collection.large_icon_2.url(:thumb), class: 'img-rounded'
 
 = link_to 'Edit', edit_application_collection_path(@application, @collection), class: 'btn btn-default'
 = link_to 'Back', @application, class: 'btn btn-link'

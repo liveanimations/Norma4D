@@ -21,8 +21,7 @@ gem 'haml'
 gem 'responders'
 gem 'simple_form'
 gem 'rmagick'
-gem 'carrierwave'
-gem 'cocoon'
+gem 'paperclip'
 
 
 # Use jquery as the JavaScript library

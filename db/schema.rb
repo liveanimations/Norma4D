@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160320160312) do
+ActiveRecord::Schema.define(version: 20160324150856) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -28,27 +28,32 @@ ActiveRecord::Schema.define(version: 20160320160312) do
   add_index "applications", ["collection_id"], name: "index_applications_on_collection_id", using: :btree
   add_index "applications", ["effect_id"], name: "index_applications_on_effect_id", using: :btree
 
-  create_table "attachments", force: :cascade do |t|
-    t.string   "name"
-    t.string   "file"
-    t.integer  "attachmentable_id"
-    t.string   "attachmentable_type"
-    t.datetime "created_at",          null: false
-    t.datetime "updated_at",          null: false
-  end
-
-  add_index "attachments", ["attachmentable_type", "attachmentable_id"], name: "index_attachments_on_attachmentable_type_and_attachmentable_id", using: :btree
-
   create_table "collections", force: :cascade do |t|
     t.decimal  "price"
     t.string   "name_ru"
     t.string   "name_en"
-    t.integer  "version",        default: 1
+    t.integer  "version",                   default: 1
     t.text     "description_ru"
     t.text     "description_en"
-    t.datetime "created_at",                 null: false
-    t.datetime "updated_at",                 null: false
+    t.datetime "created_at",                            null: false
+    t.datetime "updated_at",                            null: false
     t.integer  "application_id"
+    t.string   "small_icon_file_name"
+    t.string   "small_icon_content_type"
+    t.integer  "small_icon_file_size"
+    t.datetime "small_icon_updated_at"
+    t.string   "small_icon_2_file_name"
+    t.string   "small_icon_2_content_type"
+    t.integer  "small_icon_2_file_size"
+    t.datetime "small_icon_2_updated_at"
+    t.string   "large_icon_file_name"
+    t.string   "large_icon_content_type"
+    t.integer  "large_icon_file_size"
+    t.datetime "large_icon_updated_at"
+    t.string   "large_icon_2_file_name"
+    t.string   "large_icon_2_content_type"
+    t.integer  "large_icon_2_file_size"
+    t.datetime "large_icon_2_updated_at"
   end
 
   add_index "collections", ["application_id"], name: "index_collections_on_application_id", using: :btree

@@ -41,7 +41,15 @@ class CollectionsController < ApplicationController
 
     def collection_params
       params.require(:collection).permit(
-        :price, :name_ru, :name_en, :description_ru, :description_en, attachments_attributes: [:id, :file, :name]
+        :price,
+        :name_ru,
+        :name_en,
+        :description_ru,
+        :description_en,
+        :small_icon,
+        :small_icon_2,
+        :large_icon,
+        :large_icon_2
       )
     end
 end

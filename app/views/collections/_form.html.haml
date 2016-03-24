@@ -29,14 +29,38 @@
       .row.form-group
         .col-md-12
           %h3 Files:
-          #tasks
-            = f.simple_fields_for :attachments do |file|
-              = render 'attachment_fields', f: file
-            .links
-              = link_to_add_association 'Add File', f, :attachments, class: 'btn btn-primary'
+          .row.form-group
+            .col-md-4
+              = f.input :small_icon, as: :file, required: true
+            .col-md-8
+              #small_icon
+                - if f.object.small_icon_file_name
+                  = image_tag f.object.small_icon.url(:thumb), class: 'img-rounded'
+
+          .row.form-group
+            .col-md-4
+              = f.input :small_icon_2, as: :file, required: true
+            .col-md-8
+              #small_icon_2
+                - if f.object.small_icon_2_file_name
+                  = image_tag f.object.small_icon_2.url(:thumb), class: 'img-rounded'
+          .row.form-group
+            .col-md-4
+              = f.input :large_icon, as: :file, required: true
+            .col-md-8
+              #large_icon
+                - if f.object.large_icon_file_name
+                  = image_tag f.object.large_icon.url(:thumb), class: 'img-rounded'
+          .row.form-group
+            .col-md-4
+              = f.input :large_icon_2, as: :file, required: true
+            .col-md-8
+              #large_icon_2
+                - if f.object.large_icon_2_file_name
+                  = image_tag f.object.large_icon_2.url(:thumb), class: 'img-rounded'
 
   .row.form-group
     .col-md-12
-      = f.button :submit
+      = f.button :submit, class: 'btn btn-primary'
       = link_to 'Cancel', @application, class: 'btn btn-default'
 

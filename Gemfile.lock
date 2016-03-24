@@ -58,13 +58,11 @@ GEM
       rack (>= 1.0.0)
       rack-test (>= 0.5.4)
       xpath (~> 2.0)
-    carrierwave (0.10.0)
-      activemodel (>= 3.2.0)
-      activesupport (>= 3.2.0)
-      json (>= 1.7)
-      mime-types (>= 1.16)
+    climate_control (0.0.3)
+      activesupport (>= 3.0)
     cliver (0.3.2)
-    cocoon (1.2.8)
+    cocaine (0.5.8)
+      climate_control (>= 0.0.3, < 1.0)
     coffee-rails (4.1.1)
       coffee-script (>= 2.2.0)
       railties (>= 4.0.0, < 5.1.x)
@@ -105,6 +103,7 @@ GEM
       mime-types (>= 1.16, < 3)
     metaclass (0.0.4)
     mime-types (2.99.1)
+    mimemagic (0.3.0)
     mini_portile2 (2.0.0)
     minitest (5.8.4)
     minitest-capybara (0.7.2)
@@ -133,6 +132,12 @@ GEM
     nokogiri (1.6.7.2)
       mini_portile2 (~> 2.0.0.rc2)
     orm_adapter (0.5.0)
+    paperclip (4.3.6)
+      activemodel (>= 3.2.0)
+      activesupport (>= 3.2.0)
+      cocaine (~> 0.5.5)
+      mime-types
+      mimemagic (= 0.3.0)
     pg (0.18.4)
     phantomjs (2.1.1.0)
     poltergeist (1.9.0)
@@ -230,8 +235,6 @@ DEPENDENCIES
   bootstrap-sass
   bootstrap-wysihtml5-rails
   byebug
-  carrierwave
-  cocoon
   coffee-rails (~> 4.1.0)
   devise
   haml
@@ -241,6 +244,7 @@ DEPENDENCIES
   minitest-reporters
   minitest-stub-const
   mocha
+  paperclip
   pg (~> 0.15)
   phantomjs
   poltergeist
