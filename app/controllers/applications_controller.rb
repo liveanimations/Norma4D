@@ -1,6 +1,7 @@
 class ApplicationsController < ApplicationController
-  before_action :set_application, only: [:show, :edit, :update, :destroy]
   before_filter :authenticate_user!
+  load_and_authorize_resource
+  before_action :set_application, only: [:show, :edit, :update, :destroy]
 
   # GET /applications
   # GET /applications.json

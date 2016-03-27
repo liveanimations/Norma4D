@@ -23,6 +23,7 @@ gem 'simple_form'
 gem 'rmagick'
 gem 'paperclip'
 gem 'rails_12factor', group: :production
+gem 'cancancan'
 
 
 # Use jquery as the JavaScript library

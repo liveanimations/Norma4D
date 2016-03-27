@@ -1,4 +1,5 @@
 class EffectsController < ApplicationController
+  load_and_authorize_resource
   before_action :find_application
   before_action :set_effect, only: [:show, :edit, :update, :destroy]
   before_filter :authenticate_user!
