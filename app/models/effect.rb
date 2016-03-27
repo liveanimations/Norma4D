@@ -5,8 +5,9 @@ class Effect < ActiveRecord::Base
   has_attached_file :small_icon_2, styles: { medium: '300x300>', thumb: '140x140>' }
   has_attached_file :large_icon, styles: { medium: '300x300>', thumb: '140x140>' }
   has_attached_file :large_icon_2, styles: { medium: '300x300>', thumb: '140x140>' }
-  has_attached_file :assets
-  has_attached_file :files
+  has_attached_file :assets_ios
+  has_attached_file :assets_android
+  has_attached_file :page_for_printing
 
   validates :version, numericality: { greater_than_or_equal_to: 1 }
   validates :name_ru, presence: true

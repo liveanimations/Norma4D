@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160324220902) do
+ActiveRecord::Schema.define(version: 20160327070651) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -61,11 +61,11 @@ ActiveRecord::Schema.define(version: 20160324220902) do
   create_table "effects", force: :cascade do |t|
     t.string   "name_ru"
     t.string   "name_en"
-    t.integer  "version",                   default: 1
+    t.integer  "version",                        default: 1
     t.text     "description_ru"
     t.text     "description_en"
-    t.datetime "created_at",                            null: false
-    t.datetime "updated_at",                            null: false
+    t.datetime "created_at",                                 null: false
+    t.datetime "updated_at",                                 null: false
     t.integer  "application_id"
     t.integer  "collection_id"
     t.string   "small_icon_file_name"
@@ -84,14 +84,18 @@ ActiveRecord::Schema.define(version: 20160324220902) do
     t.string   "large_icon_2_content_type"
     t.integer  "large_icon_2_file_size"
     t.datetime "large_icon_2_updated_at"
-    t.string   "assets_file_name"
-    t.string   "assets_content_type"
-    t.integer  "assets_file_size"
-    t.datetime "assets_updated_at"
-    t.string   "files_file_name"
-    t.string   "files_content_type"
-    t.integer  "files_file_size"
-    t.datetime "files_updated_at"
+    t.string   "assets_ios_file_name"
+    t.string   "assets_ios_content_type"
+    t.integer  "assets_ios_file_size"
+    t.datetime "assets_ios_updated_at"
+    t.string   "assets_android_file_name"
+    t.string   "assets_android_content_type"
+    t.integer  "assets_android_file_size"
+    t.datetime "assets_android_updated_at"
+    t.string   "page_for_printing_file_name"
+    t.string   "page_for_printing_content_type"
+    t.integer  "page_for_printing_file_size"
+    t.datetime "page_for_printing_updated_at"
   end
 
   add_index "effects", ["application_id"], name: "index_effects_on_application_id", using: :btree
@@ -110,8 +114,12 @@ ActiveRecord::Schema.define(version: 20160324220902) do
     t.inet     "last_sign_in_ip"
     t.datetime "created_at",                          null: false
     t.datetime "updated_at",                          null: false
+    t.string   "confirmation_token"
+    t.datetime "confirmed_at"
+    t.datetime "confirmation_sent_at"
   end
 
+  add_index "users", ["confirmation_token"], name: "index_users_on_confirmation_token", unique: true, using: :btree
   add_index "users", ["email"], name: "index_users_on_email", unique: true, using: :btree
   add_index "users", ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true, using: :btree
 

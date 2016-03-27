@@ -66,15 +66,21 @@
 
           .row.form-group
             .col-md-4
-              = f.input :assets, as: :file
+              = f.input :assets_ios, as: :file
             .col-md-8
-              %h4= @effect.assets_file_name
+              %h4= @effect.assets_ios_file_name
 
           .row.form-group
             .col-md-4
-              = f.input :files, as: :file
+              = f.input :assets_android, as: :file
             .col-md-8
-              %h4= @effect.files_file_name
+              %h4= @effect.assets_android_file_name
+
+          .row.form-group
+            .col-md-4
+              = f.input :page_for_printing, as: :file
+            .col-md-8
+              %h4= @effect.page_for_printing_file_name
 
   .row.form-group
     .col-md-12

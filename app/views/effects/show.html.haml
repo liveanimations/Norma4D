@@ -32,11 +32,14 @@
       = image_tag @effect.large_icon.url(:thumb), class: 'img-rounded'
       = image_tag @effect.large_icon_2.url(:thumb), class: 'img-rounded'
     .row
-      %h3= 'Assets:'
-      %p= @effect.assets_file_name
+      %h3= 'Assets iOS:'
+      %p= @effect.assets_ios_file_name
     .row
-      %h3= 'Files:'
-      %p= @effect.files_file_name
+      %h3= 'Assets Android:'
+      %p= @effect.assets_android_file_name
+    .row
+      %h3= 'Page for printing:'
+      %p= @effect.page_for_printing_file_name
 
 = link_to 'Edit', edit_application_effect_path(@application, @effect), class: 'btn btn-default'
 = link_to 'Back', @application, class: 'btn btn-link'

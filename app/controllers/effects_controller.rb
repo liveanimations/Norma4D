@@ -50,8 +50,9 @@ class EffectsController < ApplicationController
         :small_icon_2,
         :large_icon,
         :large_icon_2,
-        :assets,
-        :files
+        :assets_ios,
+        :assets_android,
+        :page_for_printing
       )
     end
 end
