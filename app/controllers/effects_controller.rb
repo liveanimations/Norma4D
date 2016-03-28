@@ -31,6 +31,34 @@ class EffectsController < ApplicationController
     respond_with(@application, @effect, location: @application)
   end
 
+  def small_icon
+    redirect_to @effect.small_icon.url(:original, false)
+  end
+
+  def small_icon_2
+    redirect_to @effect.small_icon_2.url(:original, false)
+  end
+
+  def large_icon
+    redirect_to @effect.large_icon.url(:original, false)
+  end
+
+  def large_icon_2
+    redirect_to @effect.large_icon_2.url(:original, false)
+  end
+
+  def assets_ios
+    redirect_to @effect.assets_ios.url(:original, false)
+  end
+
+  def assets_android
+    redirect_to @effect.assets_android.url(:original, false)
+  end
+
+  def page_for_printing
+    redirect_to @effect.large_icon_2.url(:original, false)
+  end
+
   private
     def find_application
       @application = Application.find(params[:application_id])

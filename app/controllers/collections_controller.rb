@@ -43,7 +43,7 @@ class CollectionsController < ApplicationController
     redirect_to @collection.large_icon.url(:original, false)
   end
 
-  def large_icon
+  def large_icon_2
     redirect_to @collection.large_icon_2.url(:original, false)
   end
 
