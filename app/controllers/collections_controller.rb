@@ -31,6 +31,22 @@ class CollectionsController < ApplicationController
     respond_with(@application, @collection, location: @application)
   end
 
+  def small_icon
+    redirect_to @collection.small_icon.url(:original, false)
+  end
+
+  def small_icon_2
+    redirect_to @collection.small_icon_2.url(:original, false)
+  end
+
+  def large_icon
+    redirect_to @collection.large_icon.url(:original, false)
+  end
+
+  def large_icon
+    redirect_to @collection.large_icon_2.url(:original, false)
+  end
+
   private
     def find_application
       @application = Application.find(params[:application_id])
@@ -50,7 +66,9 @@ class CollectionsController < ApplicationController
         :small_icon,
         :small_icon_2,
         :large_icon,
-        :large_icon_2
+        :large_icon_2,
+        :printable,
+        :product
       )
     end
 end

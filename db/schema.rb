@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160327083959) do
+ActiveRecord::Schema.define(version: 20160328115703) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -54,6 +54,8 @@ ActiveRecord::Schema.define(version: 20160327083959) do
     t.string   "large_icon_2_content_type"
     t.integer  "large_icon_2_file_size"
     t.datetime "large_icon_2_updated_at"
+    t.string   "product"
+    t.boolean  "printable"
   end
 
   add_index "collections", ["application_id"], name: "index_collections_on_application_id", using: :btree

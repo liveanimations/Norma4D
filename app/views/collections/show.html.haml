@@ -1,10 +1,6 @@
 .row
   .col-md-4
     %p
-      %h4= 'Price: '
-      = @collection.price
-
-    %p
       %span.h4= 'Name ru: '
       = @collection.name_ru
 
@@ -21,8 +17,20 @@
       = @collection.description_en
 
     %p
+      %h4= 'Price: '
+      = @collection.price
+
+    %p
       %span.h4= 'Version: '
       = @collection.version
+
+    %p
+      %span.h4= 'Product: '
+      = @collection.product
+
+    %p
+      %span.h4= 'Printable: '
+      = @collection.printable? ? 'Yes' : 'No'
   .col-md-8
     .panel
       %h3= 'Icons:'
