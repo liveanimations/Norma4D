@@ -1,8 +1,9 @@
 class EffectsController < ApplicationController
+  before_action :authenticate_user!, only: [:show, :new, :edit, :create, :update, :destroy]
   load_and_authorize_resource
+  skip_authorize_resource except: [:show, :new, :edit, :create, :update, :destroy]
   before_action :find_application
-  before_action :set_effect, only: [:show, :edit, :update, :destroy]
-  before_filter :authenticate_user!
+  before_action :set_effect, except: :new
 
   respond_to :html, :json
 
@@ -10,7 +11,7 @@ class EffectsController < ApplicationController
   end
 
   def new
-    @effect = Effect.new
+    @effect = @application.effects.new
   end
 
   def edit

@@ -1,8 +1,9 @@
 class CollectionsController < ApplicationController
+  before_filter :authenticate_user!, only: [:show, :new, :edit, :create, :update, :destroy]
   load_and_authorize_resource
+  skip_authorize_resource except: [:show, :new, :edit, :create, :update, :destroy]
   before_action :find_application
-  before_action :set_collection, only: [:show, :edit, :update, :destroy]
-  before_filter :authenticate_user!
+  before_action :set_collection, except: :new
 
   respond_to :html, :json
 
