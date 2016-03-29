@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160328115703) do
+ActiveRecord::Schema.define(version: 20160329123816) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -98,6 +98,14 @@ ActiveRecord::Schema.define(version: 20160328115703) do
     t.string   "page_for_printing_content_type"
     t.integer  "page_for_printing_file_size"
     t.datetime "page_for_printing_updated_at"
+    t.string   "tmp1_file_name"
+    t.string   "tmp1_content_type"
+    t.integer  "tmp1_file_size"
+    t.datetime "tmp1_updated_at"
+    t.string   "tmp2_file_name"
+    t.string   "tmp2_content_type"
+    t.integer  "tmp2_file_size"
+    t.datetime "tmp2_updated_at"
   end
 
   add_index "effects", ["application_id"], name: "index_effects_on_application_id", using: :btree

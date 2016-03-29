@@ -10,6 +10,8 @@ Rails.application.routes.draw do
       get 'assets_ios', on: :member
       get 'assets_android', on: :member
       get 'page_for_printing', on: :member
+      get 'tmp1', on: :member
+      get 'tmp2', on: :member
     end
     resources :collections, except: :index do
       get 'small_icon', on: :member

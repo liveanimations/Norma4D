@@ -60,6 +60,14 @@ class EffectsController < ApplicationController
     redirect_to @effect.large_icon_2.url(:original, false)
   end
 
+  def tmp1
+    redirect_to @effect.tmp1.url(:original, false)
+  end
+
+  def tmp2
+    redirect_to @effect.tmp2.url(:original, false)
+  end
+
   private
     def find_application
       @application = Application.find(params[:application_id])
@@ -82,7 +90,9 @@ class EffectsController < ApplicationController
         :large_icon_2,
         :assets_ios,
         :assets_android,
-        :page_for_printing
+        :page_for_printing,
+        :tmp1,
+        :tmp2
       )
     end
 end

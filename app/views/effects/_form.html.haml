@@ -82,6 +82,18 @@
             .col-md-8
               %h4= @effect.page_for_printing_file_name
 
+          .row.form-group
+            .col-md-4
+              = f.input :tmp1, as: :file
+            .col-md-8
+              %h4= @effect.tmp1_file_name
+
+          .row.form-group
+            .col-md-4
+              = f.input :tmp2, as: :file
+            .col-md-8
+              %h4= @effect.tmp2_file_name
+
   .row.form-group
     .col-md-12
       = f.button :submit, class: 'btn btn-primary'

@@ -8,6 +8,8 @@ class Effect < ActiveRecord::Base
   has_attached_file :assets_ios
   has_attached_file :assets_android
   has_attached_file :page_for_printing
+  has_attached_file :tmp1
+  has_attached_file :tmp2
 
   validates :version, numericality: { greater_than_or_equal_to: 1 }
   validates :name_ru, presence: true
