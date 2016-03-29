@@ -3,7 +3,7 @@ class EffectsController < ApplicationController
   load_and_authorize_resource
   skip_authorize_resource except: [:show, :new, :edit, :create, :update, :destroy]
   before_action :find_application
-  before_action :set_effect, except: :new
+  before_action :set_effect, except: [:new, :create]
 
   respond_to :html, :json
 
