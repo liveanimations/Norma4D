@@ -57,7 +57,7 @@ class EffectsController < ApplicationController
   end
 
   def page_for_printing
-    redirect_to @effect.large_icon_2.url(:original, false)
+    redirect_to @effect.page_for_printing.url(:original, false)
   end
 
   def tmp1
