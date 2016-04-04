@@ -26,7 +26,15 @@ gem 'rmagick'
 gem 'paperclip'
 gem 'rails_12factor', group: :production
 gem 'cancancan'
+gem 'dotenv'
+gem 'dotenv-deployment', require: 'dotenv/deployment'
 
+group :development do
+  gem 'capistrano', require: false
+  gem 'capistrano-bundler', require: false
+  gem 'capistrano-rails', require: false
+  gem 'capistrano-rvm', require: false
+end
 
 # Use jquery as the JavaScript library
 gem 'jquery-rails'
