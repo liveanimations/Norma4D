@@ -29,11 +29,8 @@ gem 'cancancan'
 gem 'unicorn'
 
 group :development do
-  gem 'capistrano', require: false
-  gem 'capistrano-bundler', require: false
   gem 'capistrano-rails', require: false
   gem 'capistrano-rvm', require: false
-  gem 'capistrano-secrets-yml', '~> 1.0.0', require: false
   gem 'capistrano3-unicorn', require: false
 end
 
