@@ -1,7 +1,7 @@
 # config valid only for current version of Capistrano
 lock '3.4.0'
 
-set :application, 'admin.liveanimations'
+set :application, 'liveanimations'
 set :repo_url, 'git@github.com:Magons/Norma4D.git'
 
 # Default branch is :master
@@ -39,6 +39,7 @@ namespace :deploy do
 
   after :restart, :clear_cache do
     on roles(:web), in: :groups, limit: 3, wait: 10 do
+      invoke 'unicorn:restart'
       # Here we can do anything such as:
       # within release_path do
       #   execute :rake, 'cache:clear'
