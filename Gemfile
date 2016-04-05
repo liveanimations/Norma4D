@@ -27,7 +27,7 @@ gem 'paperclip'
 gem 'rails_12factor', group: :production
 gem 'cancancan'
 gem 'dotenv'
-gem 'dotenv-deployment', require: 'dotenv/deployment'
+gem 'dotenv-rails', require: 'dotenv/deployment'
 
 group :development do
   gem 'capistrano', require: false
