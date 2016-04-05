@@ -1,4 +1,4 @@
-root = "/home/deployer/liveanimations/current"
+root = "/home/deployer/apps/liveanimations/current"
 working_directory root
 
 pid "#{root}/tmp/pids/unicorn.pid"
