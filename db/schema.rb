@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160329123816) do
+ActiveRecord::Schema.define(version: 20160501084352) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -29,14 +29,14 @@ ActiveRecord::Schema.define(version: 20160329123816) do
   add_index "applications", ["effect_id"], name: "index_applications_on_effect_id", using: :btree
 
   create_table "collections", force: :cascade do |t|
-    t.decimal  "price"
+    t.decimal  "price",                                  null: false
     t.string   "name_ru"
     t.string   "name_en"
-    t.integer  "version",                   default: 1
+    t.integer  "version",                    default: 1
     t.text     "description_ru"
     t.text     "description_en"
-    t.datetime "created_at",                            null: false
-    t.datetime "updated_at",                            null: false
+    t.datetime "created_at",                             null: false
+    t.datetime "updated_at",                             null: false
     t.integer  "application_id"
     t.string   "small_icon_file_name"
     t.string   "small_icon_content_type"
@@ -56,6 +56,15 @@ ActiveRecord::Schema.define(version: 20160329123816) do
     t.datetime "large_icon_2_updated_at"
     t.string   "product"
     t.boolean  "printable"
+    t.string   "medium_icon_file_name"
+    t.string   "medium_icon_content_type"
+    t.integer  "medium_icon_file_size"
+    t.datetime "medium_icon_updated_at"
+    t.string   "medium_icon_2_file_name"
+    t.string   "medium_icon_2_content_type"
+    t.integer  "medium_icon_2_file_size"
+    t.datetime "medium_icon_2_updated_at"
+    t.decimal  "app_version"
   end
 
   add_index "collections", ["application_id"], name: "index_collections_on_application_id", using: :btree
