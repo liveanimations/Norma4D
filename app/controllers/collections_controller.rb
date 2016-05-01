@@ -66,10 +66,13 @@ class CollectionsController < ApplicationController
         :description_en,
         :small_icon,
         :small_icon_2,
+        :medium_icon,
+        :medium_icon_2,
         :large_icon,
         :large_icon_2,
         :printable,
-        :product
+        :product,
+        :app_version
       )
     end
 end

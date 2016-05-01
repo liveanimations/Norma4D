@@ -29,6 +29,10 @@
       = @collection.product
 
     %p
+      %span.h4= 'App version: '
+      = @collection.app_version
+
+    %p
       %span.h4= 'Printable: '
       = @collection.printable? ? 'Yes' : 'No'
   .col-md-8
@@ -37,6 +41,8 @@
       .bs-example-images
         = image_tag @collection.small_icon.url(:thumb), class: 'img-rounded'
         = image_tag @collection.small_icon_2.url(:thumb), class: 'img-rounded'
+        = image_tag @collection.medium_icon.url(:thumb), class: 'img-rounded'
+        = image_tag @collection.medium_icon_2.url(:thumb), class: 'img-rounded'
         = image_tag @collection.large_icon.url(:thumb), class: 'img-rounded'
         = image_tag @collection.large_icon_2.url(:thumb), class: 'img-rounded'
 

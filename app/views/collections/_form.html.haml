@@ -38,6 +38,11 @@
 
       .row.form-group
         .col-md-12
+          = f.label :app_version
+          = f.input_field :app_version, class: 'form-control'
+
+      .row.form-group
+        .col-md-12
           = f.label :printable
           = f.input_field :printable, as: :boolean, class: 'form-control'
 
@@ -60,6 +65,21 @@
               #small_icon_2
                 - if f.object.small_icon_2_file_name
                   = image_tag f.object.small_icon_2.url(:thumb), class: 'img-rounded'
+          .row.form-group
+            .col-md-4
+              = f.input :medium_icon, as: :file
+            .col-md-8
+              #medium_icon
+                - if f.object.medium_icon_file_name
+                  = image_tag f.object.medium_icon.url(:thumb), class: 'img-rounded'
+
+          .row.form-group
+            .col-md-4
+              = f.input :medium_icon_2, as: :file
+            .col-md-8
+              #medium_icon_2
+                - if f.object.medium_icon_2_file_name
+                  = image_tag f.object.medium_icon_2.url(:thumb), class: 'img-rounded'
           .row.form-group
             .col-md-4
               = f.input :large_icon, as: :file
