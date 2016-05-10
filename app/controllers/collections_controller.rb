@@ -40,6 +40,14 @@ class CollectionsController < ApplicationController
     redirect_to @collection.small_icon_2.url(:original, false)
   end
 
+  def medium_icon
+    redirect_to @collection.medium_icon.url(:original, false)
+  end
+
+  def medium_icon_2
+    redirect_to @collection.medium_icon_2.url(:original, false)
+  end
+
   def large_icon
     redirect_to @collection.large_icon.url(:original, false)
   end

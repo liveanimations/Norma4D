@@ -16,6 +16,8 @@ Rails.application.routes.draw do
     resources :collections, except: :index do
       get 'small_icon', on: :member
       get 'small_icon_2', on: :member
+      get 'medium_icon', on: :member
+      get 'medium_icon_2', on: :member
       get 'large_icon', on: :member
       get 'large_icon_2', on: :member
     end
