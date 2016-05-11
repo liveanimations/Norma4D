@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  resources :commercials
   devise_for :users
 
   resources :applications do
