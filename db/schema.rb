@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160511155921) do
+ActiveRecord::Schema.define(version: 20160511160531) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -81,8 +81,11 @@ ActiveRecord::Schema.define(version: 20160511155921) do
     t.string   "image2_content_type"
     t.integer  "image2_file_size"
     t.datetime "image2_updated_at"
+    t.integer  "application_id"
+    t.string   "name"
   end
 
+  add_index "commercials", ["application_id"], name: "index_commercials_on_application_id", using: :btree
   add_index "commercials", ["collection_id"], name: "index_commercials_on_collection_id", using: :btree
 
   create_table "effects", force: :cascade do |t|
@@ -158,6 +161,7 @@ ActiveRecord::Schema.define(version: 20160511155921) do
   add_foreign_key "applications", "collections"
   add_foreign_key "applications", "effects"
   add_foreign_key "collections", "applications"
+  add_foreign_key "commercials", "applications"
   add_foreign_key "commercials", "collections"
   add_foreign_key "effects", "applications"
   add_foreign_key "effects", "collections"
