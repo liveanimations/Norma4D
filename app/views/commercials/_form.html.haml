@@ -1,0 +1,43 @@
+= simple_form_for [@application, @commercial] do |f|
+  = f.error_notification
+  - if f.object.errors.any?
+    %ul
+      - f.object.errors.full_messages.each do |msg|
+        %li= msg
+
+  .row
+    .col-md-4
+      .row.form-group
+        .col-md-12
+          = f.label :name
+          = f.input_field :name, class: 'form-control'
+
+      .row.form-group
+        .col-md-12
+          = f.association :collection, collection: @application.collections.order(:name_ru), label_method: :name_ru, value_method: :id, prompt: "Choose a Collection"
+
+    .col-md-8
+      .row.form-group
+        .col-md-12
+          %h3 Files:
+          .row.form-group
+            .col-md-4
+              = f.input :image1, as: :file
+            .col-md-8
+              #image1
+                - if f.object.image1_file_name
+                  = image_tag f.object.image1.url(:thumb), class: 'img-rounded'
+
+          .row.form-group
+            .col-md-4
+              = f.input :image2, as: :file
+            .col-md-8
+              #image2
+                - if f.object.image2_file_name
+                  = image_tag f.object.image2.url(:thumb), class: 'img-rounded'
+
+  .row.form-group
+    .col-md-12
+      = f.button :submit, class: 'btn btn-primary'
+      = link_to 'Cancel', @application, class: 'btn btn-default'
+

@@ -1,0 +1,20 @@
+.row
+  .col-md-4.mt-20
+    %p
+      %span.h4= 'Name: '
+      = @commercial.name
+
+    - if @commercial.collection
+      %p
+        %span.h4= 'Collection:'
+        = @commercial.collection.name_ru
+
+  .col-md-8.panel
+    .row.panel
+      %h3= 'Icons:'
+      = image_tag @commercial.image1.url(:thumb), class: 'img-rounded'
+      = image_tag @commercial.image2.url(:thumb), class: 'img-rounded'
+
+= link_to 'Edit', edit_application_commercial_path(@application, @commercial), class: 'btn btn-default'
+= link_to 'Back', @application, class: 'btn btn-link'
+

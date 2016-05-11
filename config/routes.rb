@@ -1,5 +1,4 @@
 Rails.application.routes.draw do
-  resources :commercials
   devise_for :users
 
   resources :applications do
@@ -21,6 +20,10 @@ Rails.application.routes.draw do
       get 'medium_icon_2', on: :member
       get 'large_icon', on: :member
       get 'large_icon_2', on: :member
+    end
+    resources :commercials, except: :index do
+      get 'image1', on: :member
+      get 'image2', on: :member
     end
   end
 
