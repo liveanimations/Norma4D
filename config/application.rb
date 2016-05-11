@@ -22,7 +22,6 @@ module Norma4D
 
     # Do not swallow errors in after_commit/after_rollback callbacks
     config.assets.precompile += %w( collections.js effects.js )
-    config.web_console.development_only = false
     config.active_record.raise_in_transactional_callbacks = true
     config.assets.initialize_on_precompile = true
     config.serve_static_files = true
