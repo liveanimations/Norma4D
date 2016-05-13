@@ -92,7 +92,8 @@ class EffectsController < ApplicationController
         :assets_android,
         :page_for_printing,
         :tmp1,
-        :tmp2
+        :tmp2,
+        :avaliable
       )
     end
 end

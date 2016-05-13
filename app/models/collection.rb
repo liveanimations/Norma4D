@@ -20,4 +20,5 @@ class Collection < ActiveRecord::Base
   :medium_icon, :medium_icon_2, content_type: /\Aimage\/.*\Z/
   validates :version, numericality: { greater_than_or_equal_to: 1 }
   validates :price, presence: true
+  scope :avaliable, -> { where(avaliable: true) }
 end

@@ -24,6 +24,10 @@
     %p
       %span.h4= 'Version: '
       = @effect.version
+
+    %p
+      %span.h4= 'Avaliable: '
+      = @effect.avaliable? ? 'Yes' : 'No'
   .col-md-8.panel
     .row.panel
       %h3= 'Icons:'

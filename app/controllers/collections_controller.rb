@@ -80,7 +80,8 @@ class CollectionsController < ApplicationController
         :large_icon_2,
         :printable,
         :product,
-        :app_version
+        :app_version,
+        :avaliable
       )
     end
 end
