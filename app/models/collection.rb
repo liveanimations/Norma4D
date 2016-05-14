@@ -2,12 +2,24 @@ class Collection < ActiveRecord::Base
   belongs_to :application
   has_many :effects, dependent: :nullify
   has_many :commercials, dependent: :nullify
-  has_attached_file :small_icon, styles: { medium: '300x300>', thumb: '140x140>' }
-  has_attached_file :small_icon_2, styles: { medium: '300x300>', thumb: '140x140>' }
-  has_attached_file :medium_icon, styles: { medium: '300x300>', thumb: '140x140>' }
-  has_attached_file :medium_icon_2, styles: { medium: '300x300>', thumb: '140x140>' }
-  has_attached_file :large_icon, styles: { medium: '300x300>', thumb: '140x140>' }
-  has_attached_file :large_icon_2, styles: { medium: '300x300>', thumb: '140x140>' }
+  has_attached_file :small_icon, styles: { medium: '300x300>', thumb: '140x140>' },
+                    url: '/files/collections/:id/small_icon/:style/small_icon.:extension',
+                    path: ':rails_root/public/files/collections/:id/small_icon/:style/small_icon.:extension'
+  has_attached_file :small_icon_2, styles: { medium: '300x300>', thumb: '140x140>' },
+                    url: '/files/collections/:id/small_icon_2/:style/small_icon_2.:extension',
+                    path: ':rails_root/public/files/collections/:id/small_icon_2/:style/small_icon_2.:extension'
+  has_attached_file :medium_icon, styles: { medium: '300x300>', thumb: '140x140>' },
+                    url: '/files/collections/:id/medium_icon/:style/medium_icon.:extension',
+                    path: ':rails_root/public/files/collections/:id/medium_icon/:style/medium_icon.:extension'
+  has_attached_file :medium_icon_2, styles: { medium: '300x300>', thumb: '140x140>' },
+                    url: '/files/collections/:id/medium_icon_2/:style/medium_icon_2.:extension',
+                    path: ':rails_root/public/files/collections/:id/medium_icon_2/:style/medium_icon_2.:extension'
+  has_attached_file :large_icon, styles: { medium: '300x300>', thumb: '140x140>' },
+                    url: '/files/collections/:id/large_icon/:style/large_icon.:extension',
+                    path: ':rails_root/public/files/collections/:id/large_icon/:style/large_icon.:extension'
+  has_attached_file :large_icon_2, styles: { medium: '300x300>', thumb: '140x140>' },
+                    url: '/files/collections/:id/large_icon_2/:style/large_icon_2.:extension',
+                    path: ':rails_root/public/files/collections/:id/large_icon_2/:style/large_icon_2.:extension'
 
   validates :name_ru, presence: true
   validates_attachment_presence :small_icon
