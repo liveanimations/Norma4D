@@ -49,10 +49,12 @@ class EffectsController < ApplicationController
   end
 
   def assets_ios
+    @effect.update(ios_count_downloads: @effect.ios_count_downloads + 1)
     redirect_to @effect.assets_ios.url(:original, false)
   end
 
   def assets_android
+    @effect.update(android_count_downloads: @effect.android_count_downloads + 1)
     redirect_to @effect.assets_android.url(:original, false)
   end
 

@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160513184101) do
+ActiveRecord::Schema.define(version: 20160515071532) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -136,6 +136,8 @@ ActiveRecord::Schema.define(version: 20160513184101) do
     t.integer  "tmp2_file_size"
     t.datetime "tmp2_updated_at"
     t.boolean  "avaliable",                      default: true
+    t.integer  "ios_count_downloads",            default: 0
+    t.integer  "android_count_downloads",        default: 0
   end
 
   add_index "effects", ["application_id"], name: "index_effects_on_application_id", using: :btree

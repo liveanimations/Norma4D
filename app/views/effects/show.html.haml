@@ -28,6 +28,14 @@
     %p
       %span.h4= 'Avaliable: '
       = @effect.avaliable? ? 'Yes' : 'No'
+
+    %p
+      %span.h4= 'iOS count downloads: '
+      = @effect.ios_count_downloads
+
+    %p
+      %span.h4= 'Android count downloads: '
+      = @effect.android_count_downloads
   .col-md-8.panel
     .row.panel
       %h3= 'Icons:'

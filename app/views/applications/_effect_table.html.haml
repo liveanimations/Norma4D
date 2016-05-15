@@ -12,6 +12,8 @@
       %tr
         %th= 'Name RU'
         %th= 'Description'
+        %th.thin-column= 'iOS'
+        %th.thin-column= 'Android'
         %th.thin-column= 'Version'
         %th.thin-column= 'Actions'
 
@@ -21,6 +23,8 @@
           %td
             = link_to effect.name_ru, application_effect_path(@application, effect)
           %td= effect.description_ru
+          %td.text-center= effect.ios_count_downloads
+          %td.text-center= effect.android_count_downloads
           %td.text-center= effect.version
           %td.text-center
             .btn-group.btn-group-xs{ role: 'group' }
