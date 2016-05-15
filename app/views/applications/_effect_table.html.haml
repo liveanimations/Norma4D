@@ -1,31 +1,33 @@
 .row
   .col-xs-10
-    %h1= Effect.model_name.human.pluralize
+    %a.h2{ href: "#effects", 'data-toggle': 'collapse', 'aria-expanded': 'false', 'aria-controls': 'effects' }
+      = Effect.model_name.human.pluralize
   .col-xs-2
-    .title-control.pull-right.mt-20
+    .title-control.pull-right.mb-10
       = link_to 'Create Effect', new_application_effect_path(@application), class: 'btn btn-default'
 
-%table.table.table-striped.table-bordered.table-hover
-  %thead
-    %tr
-      %th= 'Name RU'
-      %th= 'Description'
-      %th.thin-column= 'Version'
-      %th.thin-column= 'Actions'
-
-  %tbody
-    - @application.effects.each do |effect|
+.collapse{ id: 'effects' }
+  %table.table.table-striped.table-bordered.table-hover
+    %thead
       %tr
-        %td
-          = link_to effect.name_ru, application_effect_path(@application, effect)
-        %td= effect.description_ru
-        %td.text-center= effect.version
-        %td.text-center
-          .btn-group.btn-group-xs{ role: 'group' }
-            %button.btn.btn-default.dropdown-toggle{ data: { toggle: 'dropdown' } }
-              = 'Select'
-              %span.caret
-            %ul.dropdown-menu{ role: 'menu' }
-              %li= link_to 'Edit', edit_application_effect_path(@application, effect)
-              %li= link_to 'Destroy', application_effect_path(@application, effect), method: :delete,
-                class: 'bg-danger', data: { confirm: 'Are you sure?' }
+        %th= 'Name RU'
+        %th= 'Description'
+        %th.thin-column= 'Version'
+        %th.thin-column= 'Actions'
+
+    %tbody
+      - @application.effects.each do |effect|
+        %tr
+          %td
+            = link_to effect.name_ru, application_effect_path(@application, effect)
+          %td= effect.description_ru
+          %td.text-center= effect.version
+          %td.text-center
+            .btn-group.btn-group-xs{ role: 'group' }
+              %button.btn.btn-default.dropdown-toggle{ data: { toggle: 'dropdown' } }
+                = 'Select'
+                %span.caret
+              %ul.dropdown-menu{ role: 'menu' }
+                %li= link_to 'Edit', edit_application_effect_path(@application, effect)
+                %li= link_to 'Destroy', application_effect_path(@application, effect), method: :delete,
+                  class: 'bg-danger', data: { confirm: 'Are you sure?' }
