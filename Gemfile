@@ -33,6 +33,7 @@ gem 'puma'
 gem 'jquery-rails'
 gem 'jbuilder', '~> 2.0'
 gem 'sdoc', '~> 0.4.0', group: :doc
+gem 'web-console', '~> 2.0', group: :development
 
 group :development, :test do
   gem 'byebug'
@@ -43,6 +44,5 @@ group :development, :test do
   gem 'minitest-rails-capybara'
   gem 'poltergeist'
   gem 'phantomjs', require: 'phantomjs/poltergeist'
-  gem 'web-console', '~> 2.0'
   gem 'spring'
 end
