@@ -55,7 +55,10 @@ class CommercialsController < ApplicationController
         :name,
         :collection_id,
         :image1,
-        :image2
+        :image2,
+        :title,
+        :description,
+        :price
       )
     end
 end

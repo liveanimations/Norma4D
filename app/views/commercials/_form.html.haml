@@ -16,6 +16,21 @@
         .col-md-12
           = f.association :collection, collection: @application.collections.order(:name_ru), label_method: :name_ru, value_method: :id, prompt: "Choose a Collection"
 
+      .row.form-group
+        .col-md-12
+          = f.label :title
+          = f.input_field :title, class: 'form-control'
+
+      .row.form-group
+        .col-md-12
+          = f.label :description
+          = f.input_field :description, class: 'form-control'
+
+      .row.form-group
+        .col-md-12
+          = f.label :price
+          = f.input_field :price, class: 'form-control'
+
     .col-md-8
       .row.form-group
         .col-md-12
