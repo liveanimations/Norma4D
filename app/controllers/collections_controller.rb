@@ -81,7 +81,7 @@ class CollectionsController < ApplicationController
         :printable,
         :product,
         :app_version,
-        :avaliable
+        :hide
       )
     end
 end

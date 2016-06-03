@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160515071532) do
+ActiveRecord::Schema.define(version: 20160603171520) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -29,14 +29,14 @@ ActiveRecord::Schema.define(version: 20160515071532) do
   add_index "applications", ["effect_id"], name: "index_applications_on_effect_id", using: :btree
 
   create_table "collections", force: :cascade do |t|
-    t.decimal  "price",                                     null: false
+    t.decimal  "price",                                      null: false
     t.string   "name_ru"
     t.string   "name_en"
     t.integer  "version",                    default: 1
     t.text     "description_ru"
     t.text     "description_en"
-    t.datetime "created_at",                                null: false
-    t.datetime "updated_at",                                null: false
+    t.datetime "created_at",                                 null: false
+    t.datetime "updated_at",                                 null: false
     t.integer  "application_id"
     t.string   "small_icon_file_name"
     t.string   "small_icon_content_type"
@@ -65,7 +65,7 @@ ActiveRecord::Schema.define(version: 20160515071532) do
     t.integer  "medium_icon_2_file_size"
     t.datetime "medium_icon_2_updated_at"
     t.decimal  "app_version"
-    t.boolean  "avaliable",                  default: true
+    t.boolean  "hide",                       default: false
   end
 
   add_index "collections", ["application_id"], name: "index_collections_on_application_id", using: :btree
@@ -95,8 +95,8 @@ ActiveRecord::Schema.define(version: 20160515071532) do
     t.integer  "version",                        default: 1
     t.text     "description_ru"
     t.text     "description_en"
-    t.datetime "created_at",                                    null: false
-    t.datetime "updated_at",                                    null: false
+    t.datetime "created_at",                                     null: false
+    t.datetime "updated_at",                                     null: false
     t.integer  "application_id"
     t.integer  "collection_id"
     t.string   "small_icon_file_name"
@@ -135,13 +135,48 @@ ActiveRecord::Schema.define(version: 20160515071532) do
     t.string   "tmp2_content_type"
     t.integer  "tmp2_file_size"
     t.datetime "tmp2_updated_at"
-    t.boolean  "avaliable",                      default: true
+    t.boolean  "hide",                           default: false
     t.integer  "ios_count_downloads",            default: 0
     t.integer  "android_count_downloads",        default: 0
   end
 
   add_index "effects", ["application_id"], name: "index_effects_on_application_id", using: :btree
   add_index "effects", ["collection_id"], name: "index_effects_on_collection_id", using: :btree
+
+  create_table "rails_push_notifications_apns_apps", force: :cascade do |t|
+    t.text     "apns_dev_cert"
+    t.text     "apns_prod_cert"
+    t.boolean  "sandbox_mode"
+    t.datetime "created_at",     null: false
+    t.datetime "updated_at",     null: false
+  end
+
+  create_table "rails_push_notifications_gcm_apps", force: :cascade do |t|
+    t.string   "gcm_key"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "rails_push_notifications_mpns_apps", force: :cascade do |t|
+    t.text     "cert"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "rails_push_notifications_notifications", force: :cascade do |t|
+    t.text     "destinations"
+    t.integer  "app_id"
+    t.string   "app_type"
+    t.text     "data"
+    t.text     "results"
+    t.integer  "success"
+    t.integer  "failed"
+    t.boolean  "sent",         default: false
+    t.datetime "created_at",                   null: false
+    t.datetime "updated_at",                   null: false
+  end
+
+  add_index "rails_push_notifications_notifications", ["app_id", "app_type", "sent"], name: "app_and_sent_index_on_rails_push_notifications", using: :btree
 
   create_table "users", force: :cascade do |t|
     t.string   "email",                  default: "",    null: false

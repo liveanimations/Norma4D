@@ -95,7 +95,7 @@ class EffectsController < ApplicationController
         :page_for_printing,
         :tmp1,
         :tmp2,
-        :avaliable
+        :hide
       )
     end
 end
