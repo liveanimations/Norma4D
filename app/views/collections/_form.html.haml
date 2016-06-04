@@ -6,25 +6,29 @@
         %li= msg
   .row
     .col-md-4
-      .row.form-group
+      .row.form-group.with_count
         .col-md-12
           = f.label :name_ru
-          = f.input_field :name_ru, class: 'form-control'
+          = f.input_field :name_ru, class: 'form-control characters-count-input'
+        = render 'shared/characters_count', object_attribute: f.object.name_ru
 
-      .row.form-group
+      .row.form-group.with_count
         .col-md-12
           = f.label :name_en
-          = f.input_field :name_en, class: 'form-control'
+          = f.input_field :name_en, class: 'form-control characters-count-input'
+        = render 'shared/characters_count', object_attribute: f.object.name_en
 
-      .row.form-group
+      .row.form-group.with_count
         .col-md-12
           = f.label :description_ru
-          = f.input_field :description_ru, as: :text, class: 'form-control'
+          = f.input_field :description_ru, as: :text, class: 'form-control characters-count-input'
+        = render 'shared/characters_count', object_attribute: f.object.description_ru
 
-      .row.form-group
+      .row.form-group.with_count
         .col-md-12
           = f.label :description_en
-          = f.input_field :description_en, as: :text, class: 'form-control'
+          = f.input_field :description_en, as: :text, class: 'form-control characters-count-input'
+        = render 'shared/characters_count', object_attribute: f.object.description_en
 
       .row.form-group
         .col-md-12
