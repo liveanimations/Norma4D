@@ -1,0 +1,28 @@
+.row
+  .col-xs-10
+    %h1= AutoResponder.model_name.human.pluralize
+  .col-xs-2
+    .title-control.pull-right.mt-20
+      = link_to 'New', new_auto_responder_path, class: 'btn btn-default'
+
+%table.table.table-striped.table-bordered.table-hover
+  %thead
+    %tr
+      %th= 'Name'
+      %th.thin-column= 'Actions'
+
+  %tbody
+    - @auto_responders.each do |auto_responder|
+      %tr
+        %td
+          = link_to auto_responder.name, auto_responder
+        %td.text-center
+          .btn-group.btn-group-xs{ role: 'group' }
+            %button.btn.btn-default.dropdown-toggle{ data: { toggle: 'dropdown' } }
+              = 'Select'
+              %span.caret
+            %ul.dropdown-menu{ role: 'menu' }
+              %li= link_to 'Edit', edit_auto_responder_path(auto_responder)
+              %li= link_to 'Destroy', auto_responder, method: :delete,
+                class: 'bg-danger', data: { confirm: t('helpers.links.confirm') }
+

@@ -2,6 +2,7 @@ class ApplicationsController < ApplicationController
   before_filter :authenticate_user!, except: :show
   load_and_authorize_resource
   before_action :set_application, only: [:show, :edit, :update, :destroy]
+  before_action :autoresponders, except: [:new, :edit]
 
   def index
     @applications = Application.all
@@ -52,11 +53,16 @@ class ApplicationsController < ApplicationController
   end
 
   private
-    def set_application
-      @application = Application.find(params[:id])
-    end
 
-    def application_params
-      params.require(:application).permit(:name)
-    end
+  def autoresponders
+    @autoresponders = AutoResponder.all
+  end
+
+  def set_application
+    @application = Application.find(params[:id])
+  end
+
+  def application_params
+    params.require(:application).permit(:name, :auto_responder_id)
+  end
 end

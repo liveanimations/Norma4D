@@ -1,4 +1,8 @@
 Rails.application.routes.draw do
+
+  resources :auto_responders
+  post 'technical_support/create'
+
   devise_for :users
 
   resources :applications do

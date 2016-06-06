@@ -1,0 +1,9 @@
+.row.action-name-row-wrap
+  .col-md-11
+    %h1= @auto_responder.name
+  .back-btn-col-wrap.mt-20
+    = link_to 'Back', auto_responders_path
+  .col-md-12
+    .panel.panel-primary
+      .panel-body
+        = @auto_responder.content.html_safe

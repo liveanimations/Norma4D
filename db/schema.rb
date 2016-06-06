@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160603172024) do
+ActiveRecord::Schema.define(version: 20160606110140) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -19,14 +19,23 @@ ActiveRecord::Schema.define(version: 20160603172024) do
   create_table "applications", force: :cascade do |t|
     t.string   "name"
     t.text     "description"
-    t.datetime "created_at",    null: false
-    t.datetime "updated_at",    null: false
+    t.datetime "created_at",        null: false
+    t.datetime "updated_at",        null: false
     t.integer  "effect_id"
     t.integer  "collection_id"
+    t.integer  "auto_responder_id"
   end
 
+  add_index "applications", ["auto_responder_id"], name: "index_applications_on_auto_responder_id", using: :btree
   add_index "applications", ["collection_id"], name: "index_applications_on_collection_id", using: :btree
   add_index "applications", ["effect_id"], name: "index_applications_on_effect_id", using: :btree
+
+  create_table "auto_responders", force: :cascade do |t|
+    t.string   "name"
+    t.text     "content"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
 
   create_table "collections", force: :cascade do |t|
     t.decimal  "price",                                      null: false
@@ -200,6 +209,7 @@ ActiveRecord::Schema.define(version: 20160603172024) do
   add_index "users", ["email"], name: "index_users_on_email", unique: true, using: :btree
   add_index "users", ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true, using: :btree
 
+  add_foreign_key "applications", "auto_responders"
   add_foreign_key "applications", "collections"
   add_foreign_key "applications", "effects"
   add_foreign_key "collections", "applications"

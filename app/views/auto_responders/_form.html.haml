@@ -1,4 +1,4 @@
-= simple_form_for(@application) do |f|
+= simple_form_for(@auto_responder) do |f|
   = f.error_notification
   - if f.object.errors.any?
     %ul
@@ -11,10 +11,11 @@
       = f.input_field :name, class: 'form-control'
 
   .row.form-group
-    .col-md-4
-      = f.association :auto_responder, auto_responders: @autoresponders, label_method: :name, value_method: :id, prompt: "Choose a Auto Responder"
+    .col-md-12
+      = f.input :content, as: :wysihtml5, input_html: { class: 'form-control', rows: 20 }
 
   .row.form-group
     .col-md-12
       = f.button :submit
-      = link_to 'Cancel', applications_path, class: 'btn btn-default'
+      = link_to 'Cancel', auto_responders_path, class: 'btn btn-default'
+

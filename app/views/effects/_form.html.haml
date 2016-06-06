@@ -22,6 +22,7 @@
       .row.form-group
         .col-md-12
           = f.association :collection, collection: @application.collections.order(:name_ru), label_method: :name_ru, value_method: :id, prompt: "Choose a Collection"
+
       .row.form-group.with_count
         .col-md-12
           = f.label :description_ru
