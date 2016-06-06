@@ -1,49 +1,55 @@
 require "test_helper"
 
-class CommercialsControllerTest < ActionController::TestCase
+class CommercialsControllerTest < ControllerTest
+  setup do
+    sign_in users(:one)
+  end
+
+  def application
+    @application = applications(:one)
+  end
+
   def commercial
     @commercial ||= commercials :one
   end
 
-  def test_index
-    get :index
-    assert_response :success
-    assert_not_nil assigns(:commercials)
+  def params
+    { application_id: application }
   end
 
   def test_new
-    get :new
+    get :new, params
     assert_response :success
   end
 
   def test_create
     assert_difference("Commercial.count") do
-      post :create, commercial: {  }
+      post :create, params.merge(commercial: { name: '1' })
     end
 
-    assert_redirected_to commercial_path(assigns(:commercial))
+    assert_redirected_to application_commercial_path(application, assigns(:commercial))
   end
 
   def test_show
-    get :show, id: commercial
+    get :show, params.merge(id: commercial)
     assert_response :success
   end
 
   def test_edit
-    get :edit, id: commercial
+    get :edit, params.merge(id: commercial)
     assert_response :success
   end
 
   def test_update
-    put :update, id: commercial, commercial: {  }
-    assert_redirected_to commercial_path(assigns(:commercial))
+    put :update, params.merge(id: commercial, commercial: { name: '2' })
+    assert_redirected_to application_commercial_path(application, assigns(:commercial))
   end
 
   def test_destroy
     assert_difference("Commercial.count", -1) do
-      delete :destroy, id: commercial
+      delete :destroy, params.merge(id: commercial)
     end
 
-    assert_redirected_to commercials_path
+    assert_redirected_to application_path(application)
   end
 end

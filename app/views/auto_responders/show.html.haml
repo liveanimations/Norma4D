@@ -1,9 +1,13 @@
 .row.action-name-row-wrap
-  .col-md-11
+  .col-md-10
     %h1= @auto_responder.name
+
   .back-btn-col-wrap.mt-20
-    = link_to 'Back', auto_responders_path
+    = link_to 'Edit', edit_auto_responder_path(@auto_responder), class: 'btn btn-default'
+    = link_to 'Back', auto_responders_path, class: 'btn btn-default'
   .col-md-12
-    .panel.panel-primary
+    .panel.panel-default
+      .panel-heading
+        %h4= 'Preview'
       .panel-body
         = @auto_responder.content.html_safe

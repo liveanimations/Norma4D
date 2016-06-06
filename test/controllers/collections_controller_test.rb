@@ -11,6 +11,21 @@ class CollectionsControllerTest < ControllerTest
     { application_id: @application }
   end
 
+  def file
+    fixture_file_upload('/sample_file.jpg', 'image/jpg')
+  end
+
+  def files_params
+    {
+      small_icon:    file,
+      small_icon_2:  file,
+      medium_icon:   file,
+      medium_icon_2: file,
+      large_icon:    file,
+      large_icon_2:  file
+    }
+  end
+
   test "should get new" do
     get :new, params
     assert_response :success
@@ -19,13 +34,13 @@ class CollectionsControllerTest < ControllerTest
   test "should create collection" do
     assert_difference('Collection.count') do
       post :create, params.merge(
-        collection: {
+        collection: files_params.merge({
           description_en: @collection.description_en,
           description_ru: @collection.description_ru,
           name_en: @collection.name_en,
           name_ru: @collection.name_ru,
           price: @collection.price
-        }
+        })
       )
     end
 
@@ -45,13 +60,13 @@ class CollectionsControllerTest < ControllerTest
   test "should update collection" do
     patch :update, params.merge(
         id: @collection,
-        collection: {
+        collection: files_params.merge({
           description_en: @collection.description_en,
           description_ru: @collection.description_ru,
           name_en: @collection.name_en,
           name_ru: @collection.name_ru,
           price: @collection.price
-        }
+        })
       )
     assert_equal @collection.version + 1, @collection.reload.version
     assert_redirected_to application_collection_path(@application, assigns(:collection))

@@ -2,7 +2,7 @@ require "test_helper"
 
 class CommercialTest < ActiveSupport::TestCase
   def commercial
-    @commercial ||= Commercial.new
+    @commercial ||= Commercial.new(name: '1')
   end
 
   def test_valid
