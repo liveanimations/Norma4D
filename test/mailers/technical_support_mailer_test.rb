@@ -8,6 +8,6 @@ class TechnicalSupportMailerTest < ActionMailer::TestCase
     refute_nil email
     assert_equal 'message', email.subject
 
-    assert_equal 'notifications@example.com', email.header['From'].value
+    assert_equal 'test@example.com', email.header['From'].value
   end
 end

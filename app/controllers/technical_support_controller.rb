@@ -1,5 +1,5 @@
 class TechnicalSupportController < ApplicationController
-  before_action :authenticate_user!
+  skip_before_action :verify_authenticity_token
   before_action :set_auto_respond
 
   def create

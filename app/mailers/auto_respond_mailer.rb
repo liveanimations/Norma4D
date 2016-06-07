@@ -1,5 +1,5 @@
 class AutoRespondMailer < ApplicationMailer
-  default from: 'notifications@example.com'
+  default from: 'cto@liveanimations.org'
 
   def respond(email, message)
     @message = message

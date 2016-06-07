@@ -19,6 +19,7 @@ gem 'rmagick'
 gem 'paperclip'
 gem 'rails_12factor', group: :production
 gem 'cancancan'
+gem 'postmark-rails'
 
 group :development do
   gem 'capistrano',         require: false

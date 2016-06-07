@@ -1,6 +1,6 @@
 require "test_helper"
 
-class AutoResponderTest < ActionMailer::TestCase
+class AutoResponderMailerTest < ActionMailer::TestCase
   test 'should send email' do
     AutoRespondMailer.respond('test@example.com', 'message').deliver_now
 
@@ -8,6 +8,6 @@ class AutoResponderTest < ActionMailer::TestCase
     refute_nil email
     assert_equal 'Live Animations', email.subject
 
-    assert_equal 'notifications@example.com', email.header['From'].value
+    assert_equal 'cto@liveanimations.org', email.header['From'].value
   end
 end

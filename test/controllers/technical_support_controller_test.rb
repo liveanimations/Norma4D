@@ -1,10 +1,6 @@
 require "test_helper"
 
 class TechnicalSupportControllerTest < ControllerTest
-  setup do
-    sign_in users(:one)
-  end
-
   test 'test_create' do
     assert_difference 'ActionMailer::Base.deliveries.count', 2 do
       post :create, { email: 'example@bk.ru', message: 'Body', application_id: applications(:one).id }
@@ -13,5 +9,4 @@ class TechnicalSupportControllerTest < ControllerTest
       assert_response :success
     end
   end
-
 end
