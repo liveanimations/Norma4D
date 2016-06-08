@@ -1,6 +1,7 @@
 class TechnicalSupportController < ApplicationController
   skip_before_action :verify_authenticity_token
   before_action :set_auto_respond
+  before_action :collect_email
 
   def create
     @email = requred_params[:email]
@@ -19,5 +20,9 @@ class TechnicalSupportController < ApplicationController
   def set_auto_respond
     @application = Application.find(requred_params[:application_id])
     @auto_responder = AutoResponder.find(@application.auto_responder_id)
+  end
+
+  def collect_email
+    UserEmail.create(email: requred_params[:email]) unless UserEmail.find_by_email(requred_params[:email])
   end
 end

@@ -9,4 +9,16 @@ class TechnicalSupportControllerTest < ControllerTest
       assert_response :success
     end
   end
+
+  test 'create user email' do
+    assert_difference 'UserEmail.count' do
+      post :create, { email: 'example@bk.ru', message: 'Body', application_id: applications(:one).id }
+    end
+  end
+
+  test 'don create user email if such email already exists' do
+    assert_no_difference 'UserEmail.count' do
+      post :create, { email: 'test@example.com', message: 'Body', application_id: applications(:one).id }
+    end
+  end
 end
