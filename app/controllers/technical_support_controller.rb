@@ -5,8 +5,9 @@ class TechnicalSupportController < ApplicationController
   def create
     @email = requred_params[:email]
     @message = requred_params[:message]
-    TechnicalSupportMailer.support_ticket(@email, @message).deliver_now
+    TechnicalSupportMailer.support_ticket(@email, @message, @application.name).deliver_now
     AutoRespondMailer.respond(@email, @auto_responder.content).deliver_now
+    render nothing: true
   end
 
   private
@@ -16,7 +17,7 @@ class TechnicalSupportController < ApplicationController
   end
 
   def set_auto_respond
-    application = Application.find(requred_params[:application_id])
-    @auto_responder = AutoResponder.find(application.auto_responder_id)
+    @application = Application.find(requred_params[:application_id])
+    @auto_responder = AutoResponder.find(@application.auto_responder_id)
   end
 end

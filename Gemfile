@@ -21,19 +21,9 @@ gem 'cancancan'
 gem 'postmark-rails'
 
 group :production do
-  gem 'unicorn'
+  # gem 'unicorn'
   gem 'pg'
 end
-
-group :development do
-  gem 'capistrano',         require: false
-  gem 'capistrano-rvm',     require: false
-  gem 'capistrano-rails',   require: false
-  gem 'capistrano-bundler', require: false
-  gem 'capistrano3-puma',   require: false
-end
-
-gem 'puma'
 
 gem 'jquery-rails'
 gem 'jbuilder', '~> 2.0'

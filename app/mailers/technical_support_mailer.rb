@@ -1,6 +1,10 @@
 class TechnicalSupportMailer < ApplicationMailer
-  def support_ticket(email, message)
+  default from: 'cto@liveanimations.org'
+
+  def support_ticket(email, message, application_name)
+    @email = email
+    @application_name = application_name
     @message = message
-    mail(to: 'cto@liveanimations.org', subject: message, from: email)
+    mail(to: 'cto@liveanimations.org', subject: application_name)
   end
 end
