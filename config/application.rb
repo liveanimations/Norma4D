@@ -27,5 +27,6 @@ module Norma4D
     config.serve_static_files = true
     config.assets.paths << Rails.root.join('vendor', 'assets')
     config.autoload_paths << Rails.root.join('app')
+    config.active_job.queue_adapter = :sidekiq
   end
 end

@@ -1,0 +1,10 @@
+---
+development:
+  :queues:
+    - default
+staging:
+  :queues:
+    - default
+production:
+  :queues:
+    - default
