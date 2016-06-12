@@ -8,7 +8,7 @@ class APNClient < Houston::Client
     @timeout = Float(ENV['APN_TIMEOUT'] || 0.5)
   end
 
-  def self.apple_feedback()
+  def self.apple_feedback
     APNClient.new(CERTIFICATE).devices.each do |device_id|
       device = Device.find_by_token(device_id)
       device.destroy unless device.nil?

@@ -52,7 +52,9 @@ class NotificationsControllerTest < ControllerTest
   end
 
   def test_push
-    post :push, id: notification
+    perform_enqueued_jobs do
+      post :push, id: notification
+    end
     assert_redirected_to notification_path(assigns(:notification))
   end
 end

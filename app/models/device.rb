@@ -12,13 +12,6 @@ class Device < ActiveRecord::Base
   scope :android, -> { where(device_type: 'android') }
   scope :ios, -> { where(device_type: 'ios') }
 
-  def self.notify(application_id, text)
-    notify_ios(application_id, text)
-    # notify_android(application_id, text)
-  end
-
-  private
-
   def self.notify_ios(application_id, text, data = nil)
     apn = Houston::Client.development
     apn.certificate = File.read(APNClient::CERTIFICATE)

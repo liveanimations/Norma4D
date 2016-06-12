@@ -47,6 +47,20 @@ class CollectionsControllerTest < ControllerTest
     assert_redirected_to application_collection_path(@application, assigns(:collection))
   end
 
+  test 'should sent push notifications' do
+    perform_enqueued_jobs do
+      post :create, params.merge(
+        collection: files_params.merge({
+          description_en: @collection.description_en,
+          description_ru: @collection.description_ru,
+          name_en: @collection.name_en,
+          name_ru: @collection.name_ru,
+          price: @collection.price
+        })
+      )
+    end
+  end
+
   test "should show collection" do
     get :show, params.merge(id: @collection)
     assert_response :success
@@ -70,6 +84,21 @@ class CollectionsControllerTest < ControllerTest
       )
     assert_equal @collection.version + 1, @collection.reload.version
     assert_redirected_to application_collection_path(@application, assigns(:collection))
+  end
+
+  test 'should sent push notifications when update' do
+    perform_enqueued_jobs do
+      patch :update, params.merge(
+        id: @collection,
+        collection: files_params.merge({
+          description_en: @collection.description_en,
+          description_ru: @collection.description_ru,
+          name_en: @collection.name_en,
+          name_ru: @collection.name_ru,
+          price: @collection.price
+        })
+      )
+    end
   end
 
   test "should destroy collection" do

@@ -20,14 +20,18 @@ class CollectionsController < ApplicationController
   def create
     @collection = @application.collections.create(collection_params)
     if @collection.printable
-      Device.notify(@application.id, 'New collection was added')
+      NotifyIosJob.perform_now(@application.id, 'New collection was added')
+      # NotifyAndroidJob.perform_now(@application.id, 'New collection was added')
     end
     respond_with(@application, @collection)
   end
 
   def update
     @collection.update(collection_params.merge(version: @collection.version + 1))
-    Device.notify(@application.id, "#{@collection.name_ru} was updated") if @collection.printable
+    if @collection.printable
+      NotifyIosJob.perform_now(@application.id, "#{@collection.name_ru} was updated")
+      # NotifyAndroidJob.perform_now(@application.id, "#{@collection.name_ru} was updated")
+    end
     respond_with(@application, @collection)
   end
 

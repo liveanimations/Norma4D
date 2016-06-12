@@ -52,7 +52,8 @@ class NotificationsController < ApplicationController
   end
 
   def push
-    Device.notify(@notification.application_id, @notification.text)
+    NotifyIosJob.perform_now(@notification.application_id, @notification.text)
+    # NotifyAndroidJob.perform_now(@notification.application_id, @notification.text)
     redirect_to @notification, notice: 'Notification was push.'
   end
 

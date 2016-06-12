@@ -22,6 +22,11 @@ gem 'postmark-rails'
 gem 'houston'
 gem 'gcm'
 
+# Background processing
+gem 'sidekiq'
+gem 'whenever'
+gem 'sinatra', require: false # for 'sidekiq/web'
+
 group :production do
   # gem 'unicorn'
   gem 'pg'
@@ -33,6 +38,8 @@ gem 'sdoc', '~> 0.4.0', group: :doc
 gem 'web-console', '~> 2.0', group: :development
 
 group :development, :test do
+  gem 'pry-rails'
+  gem 'pry-nav', require: false
   gem 'byebug'
   gem 'webmock'
   gem 'mocha'
