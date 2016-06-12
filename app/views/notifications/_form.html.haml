@@ -1,0 +1,23 @@
+= simple_form_for(@notification) do |f|
+  = f.error_notification
+  - if f.object.errors.any?
+    %ul
+      - f.object.errors.full_messages.each do |msg|
+        %li= msg
+
+  .row.form-group
+    .col-md-4
+      = f.input :name
+
+  .row.form-group
+    .col-md-4
+      = f.input :text, as: :text
+
+  .row.form-group
+    .col-md-4
+      = f.association :application
+
+  .row.form-group
+    .col-md-12
+      = f.button :submit
+      = link_to 'Cancel', notifications_path, class: 'btn btn-default'

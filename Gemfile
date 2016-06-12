@@ -19,6 +19,8 @@ gem 'paperclip'
 gem 'rails_12factor', group: :production
 gem 'cancancan'
 gem 'postmark-rails'
+gem 'houston'
+gem 'gcm'
 
 group :production do
   # gem 'unicorn'

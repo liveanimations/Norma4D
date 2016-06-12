@@ -26,5 +26,6 @@ module Norma4D
     config.assets.initialize_on_precompile = true
     config.serve_static_files = true
     config.assets.paths << Rails.root.join('vendor', 'assets')
+    config.autoload_paths << Rails.root.join('app')
   end
 end

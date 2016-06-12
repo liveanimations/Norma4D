@@ -1,7 +1,11 @@
 Rails.application.routes.draw do
 
+  resources :notifications do
+    post 'push', on: :member
+  end
   resources :auto_responders
   post 'technical_support/create'
+  post 'device/create'
 
   devise_for :users
 

@@ -1,0 +1,20 @@
+.row.action-name-row-wrap
+  .col-md-10
+    %h1= @notification.name
+
+  .back-btn-col-wrap.mt-20
+    = link_to 'Push',
+      push_notification_path(@notification),
+      method: :post,
+      class: 'btn btn-primary',
+      data: { confirm: 'Do you really want to send this notification to all users?' }
+    = link_to 'Back', notifications_path, class: 'btn btn-default'
+  .col-md-12
+    .panel.panel-default
+      .panel-body
+        = @notification.text
+
+  .col-md-10
+    %p
+      %span.h4= 'Application: '
+      = @notification.application.name

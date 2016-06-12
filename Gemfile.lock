@@ -71,6 +71,8 @@ GEM
       coffee-script-source
       execjs
     coffee-script-source (1.10.0)
+    commander (4.4.0)
+      highline (~> 1.7.2)
     concurrent-ruby (1.0.1)
     crack (0.4.3)
       safe_yaml (~> 1.0.0)
@@ -84,11 +86,21 @@ GEM
       warden (~> 1.2.3)
     erubis (2.7.0)
     execjs (2.6.0)
+    gcm (0.1.1)
+      httparty
+      json
     globalid (0.3.6)
       activesupport (>= 4.1.0)
     haml (4.0.7)
       tilt
     hashdiff (0.3.0)
+    highline (1.7.8)
+    houston (2.2.3)
+      commander (~> 4.1)
+      json
+    httparty (0.13.7)
+      json (~> 1.8)
+      multi_xml (>= 0.5.2)
     i18n (0.7.0)
     jbuilder (2.4.1)
       activesupport (>= 3.0.0, < 5.1)
@@ -133,6 +145,7 @@ GEM
     mocha (1.1.0)
       metaclass (~> 0.0.1)
     multi_json (1.11.2)
+    multi_xml (0.5.5)
     nokogiri (1.6.7.2)
       mini_portile2 (~> 2.0.0.rc2)
     orm_adapter (0.5.0)
@@ -254,7 +267,9 @@ DEPENDENCIES
   cancancan
   coffee-rails (~> 4.1.0)
   devise
+  gcm
   haml
+  houston
   jbuilder (~> 2.0)
   jquery-rails
   minitest-rails-capybara

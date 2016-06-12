@@ -1,0 +1,31 @@
+.row
+  .col-xs-10
+    %h1= Notification.model_name.human.pluralize
+  .col-xs-2
+    .title-control.pull-right.mt-20
+      = link_to 'New', new_notification_path, class: 'btn btn-default'
+
+%table.table.table-striped.table-bordered.table-hover
+  %thead
+    %tr
+      %th= 'Name'
+      %th= 'Text'
+      %th.thin-column= 'Actions'
+
+  %tbody
+    - @notifications.each do |notification|
+      %tr
+        %td= link_to notification.name, notification
+        %td= notification.text
+        %td.text-center
+          .btn-group.btn-group-xs{ role: 'group' }
+            %button.btn.btn-default.dropdown-toggle{ data: { toggle: 'dropdown' } }
+              = 'Select'
+              %span.caret
+            %ul.dropdown-menu{ role: 'menu' }
+              %li= link_to 'Push', push_notification_path(notification),
+                  method: :post,
+                  data: { confirm: 'Do you really want to send this notification to all users?' }
+              %li= link_to 'Edit', edit_notification_path(notification)
+              %li= link_to 'Destroy', notification, method: :delete,
+                class: 'bg-danger', data: { confirm: t('helpers.links.confirm') }

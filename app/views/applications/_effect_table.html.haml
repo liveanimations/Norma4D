@@ -12,6 +12,7 @@
       %tr
         %th= 'Name RU'
         %th= 'Description'
+        %th= 'Hide'
         %th.thin-column= 'iOS'
         %th.thin-column= 'Android'
         %th.thin-column= 'Version'
@@ -23,6 +24,7 @@
           %td
             = link_to effect.name_ru, application_effect_path(@application, effect)
           %td= effect.description_ru
+          %td= effect.hide? ? 'Yes' : 'No'
           %td.text-center= effect.ios_count_downloads
           %td.text-center= effect.android_count_downloads
           %td.text-center= effect.version
