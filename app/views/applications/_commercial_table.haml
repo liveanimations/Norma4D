@@ -11,13 +11,18 @@
     %thead
       %tr
         %th= 'Name'
+        %th= 'Title'
+        %th= 'Description'
+        %th.thin-column= 'Price'
         %th.thin-column= 'Actions'
 
     %tbody
       - @application.commercials.each do |commercial|
         %tr
-          %td
-            = link_to commercial.name, application_commercial_path(@application, commercial)
+          %td= link_to commercial.name, application_commercial_path(@application, commercial)
+          %td= commercial.title
+          %td= commercial.description
+          %td.text-center= commercial.price
           %td.text-center
             .btn-group.btn-group-xs{ role: 'group' }
               %button.btn.btn-default.dropdown-toggle{ data: { toggle: 'dropdown' } }
