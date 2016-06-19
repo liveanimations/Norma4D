@@ -1,0 +1,11 @@
+.row.action-name-row-wrap
+  .col-md-11
+    %h1= @error.message
+    %h5.text-muted= @error.error_type
+
+  .back-btn-col-wrap.mt-20
+    = link_to 'Back', errors_path, class: 'btn btn-default'
+  .col-md-12
+    .panel.panel-default
+      .panel-body
+        = @error.stack_trace

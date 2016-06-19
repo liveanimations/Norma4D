@@ -1,0 +1,12 @@
+# Read about fixtures at
+# http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  message: MyString
+  stack_trace: MyString1
+  error_type:
+
+two:
+  message: MyString
+  stack_trace: MyString2
+  error_type:

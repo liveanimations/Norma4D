@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160609134230) do
+ActiveRecord::Schema.define(version: 20160619071443) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -165,6 +165,16 @@ ActiveRecord::Schema.define(version: 20160609134230) do
 
   add_index "effects", ["application_id"], name: "index_effects_on_application_id", using: :btree
   add_index "effects", ["collection_id"], name: "index_effects_on_collection_id", using: :btree
+
+  create_table "errors", force: :cascade do |t|
+    t.string   "message"
+    t.string   "stack_trace"
+    t.string   "error_type"
+    t.datetime "created_at",  null: false
+    t.datetime "updated_at",  null: false
+  end
+
+  add_index "errors", ["stack_trace"], name: "index_errors_on_stack_trace", unique: true, using: :btree
 
   create_table "notifications", force: :cascade do |t|
     t.string   "name"

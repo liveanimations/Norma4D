@@ -1,5 +1,6 @@
 Rails.application.routes.draw do
 
+  resources :errors, except: [:new, :edit]
   resources :notifications do
     post 'push', on: :member
   end
