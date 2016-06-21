@@ -1,6 +1,7 @@
 class ErrorsController < ApplicationController
-  before_filter :authenticate_user!
-  load_and_authorize_resource
+  skip_before_action :verify_authenticity_token, only: :create
+  before_filter :authenticate_user!, except: :create
+  load_and_authorize_resource except: :create
   before_action :set_error, only: [:show, :edit, :update, :destroy]
 
   respond_to :html, :json
@@ -20,7 +21,7 @@ class ErrorsController < ApplicationController
   # POST /errors.json
   def create
     @error = Error.create(error_params)
-    respond_with(@error)
+    render nothing: true
   end
 
   # PATCH/PUT /errors/1
