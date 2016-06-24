@@ -19,7 +19,7 @@ class Device < ActiveRecord::Base
       notification = Houston::Notification.new(device: device.token)
       notification.alert = text
       # take a look at the docs about these params
-      notification.badge = 57
+      notification.badge = 1
       notification.sound = "sosumi.aiff"
       notification.custom_data = data unless data.nil?
       apn.push(notification)
