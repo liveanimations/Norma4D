@@ -20,7 +20,7 @@ class ErrorsControllerTest < ControllerTest
       post :create, error: { message: error.message, stack_trace: 'string', type: error.error_type }
     end
 
-    assert_redirected_to error_path(assigns(:error))
+    assert_response :success
   end
 
   def test_show

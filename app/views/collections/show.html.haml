@@ -49,6 +49,10 @@
         = image_tag @collection.medium_icon_2.url(:thumb), class: 'img-rounded'
         = image_tag @collection.large_icon.url(:thumb), class: 'img-rounded'
         = image_tag @collection.large_icon_2.url(:thumb), class: 'img-rounded'
+    .row
+      %h3= 'Temporary files:'
+      %p= @collection.tmp1_file_name
+      %p= @collection.tmp2_file_name
 
 = link_to 'Edit', edit_application_collection_path(@application, @collection), class: 'btn btn-default'
 = link_to 'Back', @application, class: 'btn btn-link'

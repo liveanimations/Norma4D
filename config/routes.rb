@@ -29,6 +29,8 @@ Rails.application.routes.draw do
       get 'medium_icon_2', on: :member
       get 'large_icon', on: :member
       get 'large_icon_2', on: :member
+      get 'tmp1', on: :member
+      get 'tmp2', on: :member
     end
     resources :commercials, except: :index do
       get 'image1', on: :member

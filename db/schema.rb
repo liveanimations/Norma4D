@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160619071443) do
+ActiveRecord::Schema.define(version: 20160624191958) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -75,6 +75,14 @@ ActiveRecord::Schema.define(version: 20160619071443) do
     t.datetime "medium_icon_2_updated_at"
     t.decimal  "app_version"
     t.boolean  "hide",                       default: false
+    t.string   "tmp1_file_name"
+    t.string   "tmp1_content_type"
+    t.integer  "tmp1_file_size"
+    t.datetime "tmp1_updated_at"
+    t.string   "tmp2_file_name"
+    t.string   "tmp2_content_type"
+    t.integer  "tmp2_file_size"
+    t.datetime "tmp2_updated_at"
   end
 
   add_index "collections", ["application_id"], name: "index_collections_on_application_id", using: :btree

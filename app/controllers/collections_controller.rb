@@ -64,6 +64,14 @@ class CollectionsController < ApplicationController
     redirect_to @collection.large_icon_2.url(:original, false)
   end
 
+  def tmp1
+    redirect_to @collection.tmp1.url(:original, false)
+  end
+
+  def tmp2
+    redirect_to @collection.tmp2.url(:original, false)
+  end
+
   private
     def find_application
       @application = Application.find(params[:application_id])
@@ -89,6 +97,8 @@ class CollectionsController < ApplicationController
         :printable,
         :product,
         :app_version,
+        :tmp1,
+        :tmp2,
         :hide
       )
     end
