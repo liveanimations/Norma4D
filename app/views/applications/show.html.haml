@@ -4,6 +4,20 @@
   .back-btn-col-wrap.mt-20
     = link_to 'Back', applications_path
   .container
-    = render 'collection_table'
-    = render 'effect_table'
-    = render 'commercial_table'
+    %ul.nav.nav-tabs
+      %li.active{role: 'presentation'}
+        %a{'data-toggle': 'tab', href: '#collection_table'}
+          = 'Collections'
+
+      %li{role: 'presentation'}
+        %a{'data-toggle': 'tab', href: '#effect_table'}
+          = 'Effects'
+
+      %li{role: 'presentation'}
+        %a{'data-toggle': 'tab', href: '#commercial_table'}
+          = 'Commercials'
+
+    .tab-content.mt-10
+      .tab-pane.active#collection_table= render 'collection_table'
+      .tab-pane#effect_table= render 'effect_table'
+      .tab-pane#commercial_table= render 'commercial_table'

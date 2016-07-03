@@ -12,4 +12,5 @@ class Commercial < ActiveRecord::Base
   # validates_attachment_presence :image1
   # validates_attachment_presence :image2
   validates_attachment_content_type :image1, :image2, content_type: /\Aimage\/.*\Z/
+  validates :url, format: URI::regexp(%w(http https)), if: -> { url.present? }
 end

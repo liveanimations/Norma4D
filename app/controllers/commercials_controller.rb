@@ -58,7 +58,8 @@ class CommercialsController < ApplicationController
         :image2,
         :title,
         :description,
-        :price
+        :price,
+        :url
       )
     end
 end
