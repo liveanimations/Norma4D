@@ -48,5 +48,4 @@ group :development, :test do
   gem 'minitest-rails-capybara'
   gem 'poltergeist'
   gem 'phantomjs', require: 'phantomjs/poltergeist'
-  gem 'spring'
 end
