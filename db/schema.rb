@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160703132440) do
+ActiveRecord::Schema.define(version: 20160705182057) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -100,11 +100,12 @@ ActiveRecord::Schema.define(version: 20160703132440) do
     t.integer  "image2_file_size"
     t.datetime "image2_updated_at"
     t.integer  "application_id"
-    t.string   "name"
-    t.string   "title"
-    t.text     "description"
+    t.string   "title_ru"
+    t.text     "description_ru"
     t.decimal  "price"
     t.string   "url"
+    t.string   "description_en"
+    t.string   "title_en"
   end
 
   add_index "commercials", ["application_id"], name: "index_commercials_on_application_id", using: :btree
@@ -187,11 +188,13 @@ ActiveRecord::Schema.define(version: 20160703132440) do
   add_index "errors", ["stack_trace"], name: "index_errors_on_stack_trace", unique: true, using: :btree
 
   create_table "notifications", force: :cascade do |t|
-    t.string   "name"
-    t.string   "text"
+    t.string   "name_ru"
+    t.string   "text_ru"
     t.integer  "application_id"
     t.datetime "created_at",     null: false
     t.datetime "updated_at",     null: false
+    t.string   "name_en"
+    t.string   "text_en"
   end
 
   add_index "notifications", ["application_id"], name: "index_notifications_on_application_id", using: :btree

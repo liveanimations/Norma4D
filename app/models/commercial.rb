@@ -8,7 +8,8 @@ class Commercial < ActiveRecord::Base
                     url: '/files/commercials/:id/image2/:style/image2.:extension',
                     path: ':rails_root/public/files/commercials/:id/image2/:style/image2.:extension'
 
-  validates :name, presence: true
+  validates :title_ru, presence: true
+  validates :title_en, presence: true
   # validates_attachment_presence :image1
   # validates_attachment_presence :image2
   validates_attachment_content_type :image1, :image2, content_type: /\Aimage\/.*\Z/

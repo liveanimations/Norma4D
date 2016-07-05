@@ -52,12 +52,13 @@ class CommercialsController < ApplicationController
 
     def commercial_params
       params.require(:commercial).permit(
-        :name,
         :collection_id,
         :image1,
         :image2,
-        :title,
-        :description,
+        :title_en,
+        :title_ru,
+        :description_en,
+        :description_ru,
         :price,
         :url
       )

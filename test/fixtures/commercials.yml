@@ -7,6 +7,15 @@
 #
 one:
   application: one
+  title_ru: Title RU
+  title_en: Title EN
+  description_ru: Description RU
+  description_en: Description EN
+
 #
 two:
   application: one
+  title_ru: Title RU
+  title_en: Title EN
+  description_ru: Description RU
+  description_en: Description EN

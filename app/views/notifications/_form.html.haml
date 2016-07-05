@@ -7,11 +7,19 @@
 
   .row.form-group
     .col-md-4
-      = f.input :name
+      = f.input :name_ru
 
   .row.form-group
     .col-md-4
-      = f.input :text, as: :text
+      = f.input :name_en
+
+  .row.form-group
+    .col-md-4
+      = f.input :text_ru, as: :text
+
+  .row.form-group
+    .col-md-4
+      = f.input :text_en, as: :text
 
   .row.form-group
     .col-md-4

@@ -52,8 +52,8 @@ class NotificationsController < ApplicationController
   end
 
   def push
-    NotifyIosJob.perform_later(@notification.application_id, @notification.text)
-    # NotifyAndroidJob..perform_later(@notification.application_id, @notification.text)
+    NotifyIosJob.perform_later(@notification.application_id, @notification.text_ru)
+    # NotifyAndroidJob.perform_later(@notification.application_id, @notification.text)
     redirect_to @notification, notice: 'Notification was push.'
   end
 
@@ -64,6 +64,6 @@ class NotificationsController < ApplicationController
   end
 
   def notification_params
-    params.require(:notification).permit(:name, :text, :application_id)
+    params.require(:notification).permit(:name_ru, :name_en, :text_ru, :text_en, :application_id)
   end
 end

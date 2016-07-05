@@ -1,19 +1,22 @@
 .row
   .col-md-4.mt-20
     %p
-      %span.h4= 'Name: '
-      = @commercial.name
+      %span.h4= 'Title RU: '
+      = @commercial.title_ru
+    %p
+      %span.h4= 'Title EN: '
+      = @commercial.title_en
+    %p
+      %span.h4= 'Description RU: '
+      = @commercial.description_ru
+    %p
+      %span.h4= 'Description EN: '
+      = @commercial.description_en
 
     - if @commercial.collection
       %p
         %span.h4= 'Collection:'
         = @commercial.collection.name_ru
-    %p
-      %span.h4= 'Title: '
-      = @commercial.title
-    %p
-      %span.h4= 'Description: '
-      = @commercial.description
     %p
       %span.h4= 'Price: '
       = @commercial.price

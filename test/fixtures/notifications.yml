@@ -2,11 +2,15 @@
 # http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
 
 one:
-  name: MyString
-  text: MyString
+  name_ru: Name RU
+  name_en: Name EN
+  text_ru: Text RU
+  text_en: Text EN
   application: one
 
 two:
-  name: MyString
-  text: MyString
+  name_ru: Name RU
+  name_en: Name EN
+  text_ru: Text RU
+  text_en: Text EN
   application: one

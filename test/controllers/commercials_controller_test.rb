@@ -24,7 +24,7 @@ class CommercialsControllerTest < ControllerTest
 
   def test_create
     assert_difference("Commercial.count") do
-      post :create, params.merge(commercial: { name: '1' })
+      post :create, params.merge(commercial: { title_ru: 'RUS', title_en: 'ENG' })
     end
 
     assert_redirected_to application_commercial_path(application, assigns(:commercial))

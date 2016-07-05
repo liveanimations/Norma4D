@@ -6,18 +6,20 @@
 %table.table.table-striped.table-bordered.table-hover
   %thead
     %tr
-      %th= 'Name'
-      %th= 'Title'
-      %th= 'Description'
+      %th= 'Title RU'
+      %th= 'Title EN'
+      %th= 'Description RU'
+      %th= 'Description EN'
       %th.thin-column= 'Price'
       %th.thin-column= 'Actions'
 
   %tbody
     - @application.commercials.each do |commercial|
       %tr
-        %td= link_to commercial.name, application_commercial_path(@application, commercial)
-        %td= commercial.title
-        %td= commercial.description
+        %td= link_to commercial.title_ru, application_commercial_path(@application, commercial)
+        %td= link_to commercial.title_en, application_commercial_path(@application, commercial)
+        %td= commercial.description_ru
+        %td= commercial.description_en
         %td.text-center= commercial.price
         %td.text-center
           .btn-group.btn-group-xs{ role: 'group' }

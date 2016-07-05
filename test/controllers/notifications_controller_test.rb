@@ -22,7 +22,13 @@ class NotificationsControllerTest < ControllerTest
 
   def test_create
     assert_difference("Notification.count") do
-      post :create, notification: { application_id: notification.application_id, name: notification.name, text: notification.text }
+      post :create, notification: {
+                      application_id: notification.application_id,
+                      name_ru: notification.name_ru,
+                      name_en: notification.name_en,
+                      text_ru: notification.text_ru,
+                      text_en: notification.text_en
+                    }
     end
 
     assert_redirected_to notification_path(assigns(:notification))
@@ -39,7 +45,13 @@ class NotificationsControllerTest < ControllerTest
   end
 
   def test_update
-    put :update, id: notification, notification: { application_id: notification.application_id, name: notification.name, text: notification.text }
+    put :update, id: notification, notification: {
+                                    application_id: notification.application_id,
+                                    name_ru: notification.name_ru,
+                                    name_en: notification.name_en,
+                                    text_ru: notification.text_ru,
+                                    text_en: notification.text_en
+                                   }
     assert_redirected_to notification_path(assigns(:notification))
   end
 

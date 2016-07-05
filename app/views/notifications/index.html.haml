@@ -8,15 +8,19 @@
 %table.table.table-striped.table-bordered.table-hover
   %thead
     %tr
-      %th= 'Name'
-      %th= 'Text'
+      %th= 'Name RU'
+      %th= 'Name EN'
+      %th= 'Text RU'
+      %th= 'Text EN'
       %th.thin-column= 'Actions'
 
   %tbody
     - @notifications.each do |notification|
       %tr
-        %td= link_to notification.name, notification
-        %td= notification.text
+        %td= link_to notification.name_ru, notification
+        %td= link_to notification.name_en, notification
+        %td= notification.text_ru
+        %td= notification.text_en
         %td.text-center
           .btn-group.btn-group-xs{ role: 'group' }
             %button.btn.btn-default.dropdown-toggle{ data: { toggle: 'dropdown' } }

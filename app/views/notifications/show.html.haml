@@ -1,6 +1,6 @@
 .row.action-name-row-wrap
   .col-md-10
-    %h1= @notification.name
+    %h1= @notification.name_ru || @notification.name_en
 
   .back-btn-col-wrap.mt-20
     = link_to 'Push',
@@ -9,10 +9,14 @@
       class: 'btn btn-primary',
       data: { confirm: 'Do you really want to send this notification to all users?' }
     = link_to 'Back', notifications_path, class: 'btn btn-default'
-  .col-md-12
+  .col-md-6
     .panel.panel-default
       .panel-body
-        = @notification.text
+        = @notification.text_ru
+  .col-md-6
+    .panel.panel-default
+      .panel-body
+        = @notification.text_en
 
   .col-md-10
     %p

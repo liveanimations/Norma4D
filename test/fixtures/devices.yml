@@ -5,8 +5,10 @@ one:
   token: MyString1
   device_type: MyString
   application: one
+  lang: RU
 
 two:
   token: MyString2
   device_type: MyString
   application: two
+  lang: EN
