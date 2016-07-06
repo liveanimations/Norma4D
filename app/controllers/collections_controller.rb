@@ -29,7 +29,7 @@ class CollectionsController < ApplicationController
   def update
     @collection.update(collection_params.merge(version: @collection.version + 1))
     if @collection.printable
-      NotifyIosJob.perform_later(@application.id, "#{@collection.name_ru} was updated")
+      NotifyIosJob.perform_later(@application.id, @collection)
       # NotifyAndroidJob.perform_later(@application.id, "#{@collection.name_ru} was updated")
     end
     respond_with(@application, @collection)

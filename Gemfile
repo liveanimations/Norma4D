@@ -21,6 +21,7 @@ gem 'cancancan'
 gem 'postmark-rails'
 gem 'houston'
 gem 'gcm'
+gem 'iso-639'
 
 # Background processing
 gem 'sidekiq'

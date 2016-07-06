@@ -7,7 +7,7 @@ class NotifyAndroidJobTest < ActiveJob::TestCase
 
   def test_sanity
     WebMock.stub_request(:post, "https://gcm-http.googleapis.com/gcm/send").
-      with(:body => "{\"registration_ids\":[],\"data\":\"text\",\"collapse_key\":\"my_app\"}",
+      with(:body => "{\"registration_ids\":[\"7851b3094ec5e7be978c\"],\"data\":\"text\",\"collapse_key\":\"my_app\"}",
        :headers => {'Authorization'=>'key=', 'Content-Type'=>'application/json'}).
       to_return(:status => 200, :body => "", :headers => {})
     assert_performed_with(job: NotifyAndroidJob) do
