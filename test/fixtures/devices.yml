@@ -10,11 +10,17 @@ ios_device_ru:
 ios_device_en:
   token: 9af9029298c7dd52f292
   device_type: ios
-  application: two
+  application: one
   lang: EN
 
 android_device_ru:
   token: 7851b3094ec5e7be978c
   device_type: android
+  application: one
+  lang: RU
+
+ios_device_ru_two:
+  token: 7851b3094ec5e7be978q
+  device_type: ios
   application: two
   lang: RU
