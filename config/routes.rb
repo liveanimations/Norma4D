@@ -65,6 +65,7 @@ Rails.application.routes.draw do
       end
       resources :errors, only: :create
       post 'devices/create'
+      post 'technical_support/create'
     end
   end
 
