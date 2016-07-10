@@ -73,33 +73,34 @@ class CollectionsController < ApplicationController
   end
 
   private
-    def find_application
-      @application = Application.find(params[:application_id])
-    end
 
-    def set_collection
-      @collection = @application.collections.find(params[:id])
-    end
+  def find_application
+    @application = Application.find(params[:application_id])
+  end
 
-    def collection_params
-      params.require(:collection).permit(
-        :price,
-        :name_ru,
-        :name_en,
-        :description_ru,
-        :description_en,
-        :small_icon,
-        :small_icon_2,
-        :medium_icon,
-        :medium_icon_2,
-        :large_icon,
-        :large_icon_2,
-        :printable,
-        :product,
-        :app_version,
-        :tmp1,
-        :tmp2,
-        :hide
-      )
-    end
+  def set_collection
+    @collection = @application.collections.find(params[:id])
+  end
+
+  def collection_params
+    params.require(:collection).permit(
+      :price,
+      :name_ru,
+      :name_en,
+      :description_ru,
+      :description_en,
+      :small_icon,
+      :small_icon_2,
+      :medium_icon,
+      :medium_icon_2,
+      :large_icon,
+      :large_icon_2,
+      :printable,
+      :product,
+      :app_version,
+      :tmp1,
+      :tmp2,
+      :hide
+    )
+  end
 end

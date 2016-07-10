@@ -41,7 +41,7 @@ Rails.application.routes.draw do
   namespace :api do
     namespace :v1 do
       resources :applications, only: :show do
-        resources :collections, only: [] do
+        resources :collections, only: [], controller: 'collections' do
           get 'small_icon', on: :member
           get 'small_icon_2', on: :member
           get 'medium_icon', on: :member
