@@ -17,29 +17,28 @@ class Api::V1::ApplicationsControllerTest < ActionController::TestCase
     devices(:ios_device_ru_two)
   end
 
+  def api_token
+    Rails.application.secrets.api_token
+  end
+
   test 'unauthorized when token is not passed' do
     get :show, id: application
     assert_response :unauthorized
   end
 
   test 'unauthorized when token is wrong' do
-    get :show, id: application, token: 'potato'
-    assert_response :unauthorized
-  end
-
-  test 'unauthorized when token from other application' do
-    get :show, id: application, token: device_two.token
+    get :show, id: application, api_token: 'potato'
     assert_response :unauthorized
   end
 
   test 'returns application' do
-    get :show, id: application, token: device.token
+    get :show, id: application, api_token: api_token
     assert_equal application.to_json, assigns(:application).to_json
     assert_response :success
   end
 
   test 'returns only avaliable collections for application' do
-    get :show, id: application, token: device.token
+    get :show, id: application, api_token: api_token
     assert_equal(
       application.collections.where(hide: false).pluck(:id).sort,
       application_json[:collections].map { |c| c[:id] }.sort
@@ -48,7 +47,7 @@ class Api::V1::ApplicationsControllerTest < ActionController::TestCase
   end
 
   test 'returns only avaliable effects for application' do
-    get :show, id: application, token: device.token
+    get :show, id: application, api_token: api_token
     assert_equal(
       application.effects.where(hide: false).pluck(:id).sort,
       application_json[:effects].map { |c| c[:id] }.sort
@@ -57,7 +56,7 @@ class Api::V1::ApplicationsControllerTest < ActionController::TestCase
   end
 
   test 'returns commercials for application' do
-    get :show, id: application, token: device.token
+    get :show, id: application, api_token: api_token
     assert_equal(
       application.commercials.pluck(:id).sort,
       application_json[:commercials].map { |c| c[:id] }.sort
