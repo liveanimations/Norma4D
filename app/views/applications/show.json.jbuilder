@@ -3,5 +3,5 @@ json.effects @application.effects.avaliable, :id, :collection_id, :version, :nam
 json.collections @application.collections.avaliable, :id, :version, :name_ru, :name_en, :description_ru, :description_en, :price, :product, :printable, :app_version
 
 json.commercials @application.commercials, :id, :collection_id, :title_ru, :title_en, :description_ru,
-:description_en, :price
+:description_en, :price, :version
 

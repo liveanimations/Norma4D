@@ -45,6 +45,11 @@ class CommercialsControllerTest < ControllerTest
     assert_redirected_to application_commercial_path(application, assigns(:commercial))
   end
 
+  def version_increase_when_update
+    put :update, params.merge(id: commercial, commercial: { name: '2' })
+    asser_equel 2, commercial.version
+  end
+
   def test_destroy
     assert_difference("Commercial.count", -1) do
       delete :destroy, params.merge(id: commercial)

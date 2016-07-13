@@ -25,7 +25,7 @@ class ApplicationTest < ActiveSupport::TestCase
   end
 
   def commercials_attributes
-    [:id, :collection_id, :title_ru, :description_ru, :price, :description_en, :title_en]
+    [:id, :collection_id, :title_ru, :description_ru, :price, :description_en, :title_en, :version]
   end
 
   test 'as_json' do

@@ -10,6 +10,7 @@
       %th= 'Title EN'
       %th= 'Description RU'
       %th= 'Description EN'
+      %th.thin-column= 'Version'
       %th.thin-column= 'Price'
       %th.thin-column= 'Actions'
 
@@ -20,6 +21,7 @@
         %td= link_to commercial.title_en, application_commercial_path(@application, commercial)
         %td= commercial.description_ru
         %td= commercial.description_en
+        %td.text-center= commercial.version
         %td.text-center= commercial.price
         %td.text-center
           .btn-group.btn-group-xs{ role: 'group' }

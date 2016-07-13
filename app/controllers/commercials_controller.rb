@@ -23,7 +23,7 @@ class CommercialsController < ApplicationController
   end
 
   def update
-    @commercial.update(commercial_params)
+    @commercial.update(commercial_params.merge(version: @commercial.version + 1))
     respond_with(@application, @commercial)
   end
 
