@@ -28,14 +28,14 @@ class Api::V1::CollectionsControllerTest < ActionController::TestCase
 
   def self.test_unauthorized_when_token_is_not_passed(action)
     test "unauthorized #{action} when token is not passed" do
-      post action, application_id: application, id: collection
+      get action, application_id: application, id: collection
       assert_response :unauthorized
     end
   end
 
   def self.test_unauthorized_when_token_is_wrong(action)
     test "unauthorized #{action} when token is wrong" do
-      post action, api_token: 'potato', application_id: application, id: collection
+      get action, api_token: 'potato', application_id: application, id: collection
       assert_response :unauthorized
     end
   end

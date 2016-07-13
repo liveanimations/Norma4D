@@ -3,7 +3,7 @@ module Api
     class EffectsController < Api::BaseController
       before_action :verify_token
       before_action :find_application
-      before_action :set_collection
+      before_action :set_effect
 
       def small_icon
         redirect_to @effect.small_icon.url(:original, false)
@@ -49,7 +49,7 @@ module Api
         @application = Application.find(params[:application_id])
       end
 
-      def set_collection
+      def set_effect
         @effect = @application.effects.find(params[:id])
       end
     end

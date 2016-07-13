@@ -63,6 +63,10 @@ Rails.application.routes.draw do
           get 'tmp2', on: :member
         end
       end
+      resources :commercials, only: [] do
+        get 'image1', on: :member
+        get 'image2', on: :member
+      end
       resources :errors, only: :create
       post 'devices/create'
       post 'technical_support/create'
