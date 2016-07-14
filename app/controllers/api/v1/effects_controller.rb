@@ -35,12 +35,12 @@ module Api
         redirect_to @effect.page_for_printing.url(:original, false)
       end
 
-      def tmp1
-        redirect_to @effect.tmp1.url(:original, false)
+      def dat
+        redirect_to @effect.dat.url(:original, false)
       end
 
-      def tmp2
-        redirect_to @effect.tmp2.url(:original, false)
+      def xml
+        redirect_to @effect.xml.url(:original, false)
       end
 
       private

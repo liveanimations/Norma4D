@@ -20,12 +20,12 @@ class Collection < ActiveRecord::Base
   has_attached_file :large_icon_2, styles: { medium: '300x300>', thumb: '140x140>' },
                     url: '/files/collections/:id/large_icon_2/:style/large_icon_2.:extension',
                     path: ':rails_root/public/files/collections/:id/large_icon_2/:style/large_icon_2.:extension'
-  has_attached_file :tmp1,
-                    url: '/files/collections/:id/tmp1.:extension',
-                    path: ':rails_root/public/files/collections/:id/tmp1.:extension'
-  has_attached_file :tmp2,
-                    url: '/files/collections/:id/tmp2.:extension',
-                    path: ':rails_root/public/files/collections/:id/tmp2.:extension'
+  has_attached_file :dat,
+                    url: '/files/collections/:id/dat.:extension',
+                    path: ':rails_root/public/files/collections/:id/dat.:extension'
+  has_attached_file :xml,
+                    url: '/files/collections/:id/xml.:extension',
+                    path: ':rails_root/public/files/collections/:id/xml.:extension'
 
   validates :name_ru, presence: true
   validates_attachment_presence :small_icon

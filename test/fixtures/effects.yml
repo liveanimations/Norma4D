@@ -7,6 +7,7 @@ one:
   description_ru: MyText
   description_en: MyText
   application: one
+  collection: one
 
 two:
   name_ru: MyString
@@ -15,3 +16,4 @@ two:
   description_ru: MyText
   description_en: MyText
   application: one
+  collection: one

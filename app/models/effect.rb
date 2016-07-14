@@ -22,15 +22,16 @@ class Effect < ActiveRecord::Base
   has_attached_file :page_for_printing,
                     url: '/files/effects/:id/page_for_printing.:extension',
                     path: ':rails_root/public/files/effects/:id/page_for_printing.:extension'
-  has_attached_file :tmp1,
-                    url: '/files/effects/:id/tmp1.:extension',
-                    path: ':rails_root/public/files/effects/:id/tmp1.:extension'
-  has_attached_file :tmp2,
-                    url: '/files/effects/:id/tmp2.:extension',
-                    path: ':rails_root/public/files/effects/:id/tmp2.:extension'
+  has_attached_file :dat,
+                    url: '/files/effects/:id/dat.:extension',
+                    path: ':rails_root/public/files/effects/:id/dat.:extension'
+  has_attached_file :xml,
+                    url: '/files/effects/:id/xml.:extension',
+                    path: ':rails_root/public/files/effects/:id/xml.:extension'
 
   validates :version, numericality: { greater_than_or_equal_to: 1 }
   validates :name_ru, presence: true
+  validates :collection_id, presence: true
   validates_attachment_presence :small_icon
   validates_attachment_presence :small_icon_2
   validates_attachment_presence :large_icon

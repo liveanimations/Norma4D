@@ -3,6 +3,7 @@ require 'test_helper'
 class EffectsControllerTest < ControllerTest
   setup do
     @application = applications(:one)
+    @collection = collections(:one)
     @effect = effects(:one)
     sign_in users(:one)
   end
@@ -37,6 +38,7 @@ class EffectsControllerTest < ControllerTest
           description_ru: @effect.description_ru,
           name_en: @effect.name_en,
           name_ru: @effect.name_ru,
+          collection_id: @collection
         })
       )
     end

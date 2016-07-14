@@ -19,8 +19,8 @@ Rails.application.routes.draw do
       get 'assets_ios', on: :member
       get 'assets_android', on: :member
       get 'page_for_printing', on: :member
-      get 'tmp1', on: :member
-      get 'tmp2', on: :member
+      get 'dat', on: :member
+      get 'xml', on: :member
     end
     resources :collections, except: :index do
       get 'small_icon', on: :member
@@ -29,8 +29,8 @@ Rails.application.routes.draw do
       get 'medium_icon_2', on: :member
       get 'large_icon', on: :member
       get 'large_icon_2', on: :member
-      get 'tmp1', on: :member
-      get 'tmp2', on: :member
+      get 'dat', on: :member
+      get 'xml', on: :member
     end
     resources :commercials, except: :index do
       get 'image1', on: :member
@@ -48,8 +48,8 @@ Rails.application.routes.draw do
           get 'medium_icon_2', on: :member
           get 'large_icon', on: :member
           get 'large_icon_2', on: :member
-          get 'tmp1', on: :member
-          get 'tmp2', on: :member
+          get 'dat', on: :member
+          get 'xml', on: :member
         end
         resources :effects, only: [] do
           get 'small_icon', on: :member
@@ -59,8 +59,8 @@ Rails.application.routes.draw do
           get 'assets_ios', on: :member
           get 'assets_android', on: :member
           get 'page_for_printing', on: :member
-          get 'tmp1', on: :member
-          get 'tmp2', on: :member
+          get 'dat', on: :member
+          get 'xml', on: :member
         end
       end
       resources :commercials, only: [] do

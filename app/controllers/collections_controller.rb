@@ -64,12 +64,12 @@ class CollectionsController < ApplicationController
     redirect_to @collection.large_icon_2.url(:original, false)
   end
 
-  def tmp1
-    redirect_to @collection.tmp1.url(:original, false)
+  def dat
+    redirect_to @collection.dat.url(:original, false)
   end
 
-  def tmp2
-    redirect_to @collection.tmp2.url(:original, false)
+  def xml
+    redirect_to @collection.xml.url(:original, false)
   end
 
   private
@@ -98,8 +98,8 @@ class CollectionsController < ApplicationController
       :printable,
       :product,
       :app_version,
-      :tmp1,
-      :tmp2,
+      :dat,
+      :xml,
       :hide
     )
   end

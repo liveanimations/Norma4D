@@ -54,8 +54,8 @@
       %p= @effect.page_for_printing_file_name
     .row
       %h3= 'Temporary files:'
-      %p= @effect.tmp1_file_name
-      %p= @effect.tmp2_file_name
+      %p= @effect.dat_file_name
+      %p= @effect.xml_file_name
 
 = link_to 'Edit', edit_application_effect_path(@application, @effect), class: 'btn btn-default'
 = link_to 'Back', @application, class: 'btn btn-link'

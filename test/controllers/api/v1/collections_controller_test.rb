@@ -21,8 +21,8 @@ class Api::V1::CollectionsControllerTest < ActionController::TestCase
       medium_icon_2: File.new("test/fixtures/sample_file.jpg"),
       large_icon: File.new("test/fixtures/sample_file.jpg"),
       large_icon_2: File.new("test/fixtures/sample_file.jpg"),
-      tmp1: File.new("test/fixtures/sample_file.jpg"),
-      tmp2: File.new("test/fixtures/sample_file.jpg")
+      dat: File.new("test/fixtures/sample_file.jpg"),
+      xml: File.new("test/fixtures/sample_file.jpg")
     )
   end
 
@@ -43,7 +43,7 @@ class Api::V1::CollectionsControllerTest < ActionController::TestCase
   def self.test_redirect_to_file_path(action)
     test "#{action} returns the file" do
       get action, api_token: api_token, application_id: application, id: collection
-      url = if [:tmp1, :tmp2].include?(action.to_sym)
+      url = if [:dat, :xml].include?(action.to_sym)
         "http://test.host/files/collections/980190962/#{action}.jpg"
       else
         "http://test.host/files/collections/980190962/#{action}/original/#{action}.jpg"
@@ -64,9 +64,9 @@ class Api::V1::CollectionsControllerTest < ActionController::TestCase
 
   test_unauthorized_when_token_is_not_passed(:large_icon_2)
 
-  test_unauthorized_when_token_is_not_passed(:tmp1)
+  test_unauthorized_when_token_is_not_passed(:dat)
 
-  test_unauthorized_when_token_is_not_passed(:tmp2)
+  test_unauthorized_when_token_is_not_passed(:xml)
 
 
   test_unauthorized_when_token_is_wrong(:small_icon)
@@ -81,9 +81,9 @@ class Api::V1::CollectionsControllerTest < ActionController::TestCase
 
   test_unauthorized_when_token_is_wrong(:large_icon_2)
 
-  test_unauthorized_when_token_is_wrong(:tmp1)
+  test_unauthorized_when_token_is_wrong(:dat)
 
-  test_unauthorized_when_token_is_wrong(:tmp2)
+  test_unauthorized_when_token_is_wrong(:xml)
 
 
   test_redirect_to_file_path(:small_icon)
@@ -98,7 +98,7 @@ class Api::V1::CollectionsControllerTest < ActionController::TestCase
 
   test_redirect_to_file_path(:large_icon_2)
 
-  test_redirect_to_file_path(:tmp1)
+  test_redirect_to_file_path(:dat)
 
-  test_redirect_to_file_path(:tmp2)
+  test_redirect_to_file_path(:xml)
 end
