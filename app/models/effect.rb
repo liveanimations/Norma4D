@@ -38,5 +38,5 @@ class Effect < ActiveRecord::Base
   validates_attachment_presence :large_icon_2
   validates_attachment_content_type :small_icon, :small_icon_2, :large_icon, :large_icon_2,
   content_type: /\Aimage\/.*\Z/
-  scope :avaliable, -> { where(hide: false) }
+  scope :avaliable, -> { joins(:collection).where('collections.hide = false').where(hide: false) }
 end
