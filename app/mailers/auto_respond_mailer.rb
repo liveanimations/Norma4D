@@ -1,5 +1,5 @@
 class AutoRespondMailer < ApplicationMailer
-  default from: 'cto@liveanimations.org'
+  default from: 'support@livecoloring.org'
 
   def respond(email, content)
     @content = content

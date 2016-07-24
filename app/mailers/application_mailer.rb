@@ -1,4 +1,4 @@
 class ApplicationMailer < ActionMailer::Base
-  default from: 'cto@liveanimations.org'
+  default from: 'support@livecoloring.org'
   layout 'mailer'
 end
