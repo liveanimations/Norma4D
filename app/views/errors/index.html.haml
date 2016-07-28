@@ -2,20 +2,22 @@
   .col-xs-10
     %h1= 'Errors'
 
-%table.table.table-striped.table-bordered.table-hover
-  %thead
-    %tr
-      %th= 'Message'
-      %th= 'Stack Trace'
-      %th.thin-column= 'Type'
-      %th.thin-column= 'Action'
+.row
+  .col-md-12
+    %table.table.table-striped.table-bordered.table-hover
+      %thead
+        %tr
+          %th= 'Message'
+          %th= 'Stack Trace'
+          %th.thin-column= 'Type'
+          %th.thin-column= 'Action'
 
-  %tbody
-    - @errors.each do |error|
-      %tr
-        %td= link_to error.message, error
-        %td= error.stack_trace
-        %td.text-center= error.error_type
-        %td.text-center
-          = link_to '', error, method: :delete, class: 'glyphicon glyphicon-trash text-danger', data: { confirm: t('helpers.links.confirm') }
+      %tbody
+        - @errors.each do |error|
+          %tr
+            %td= link_to error.message, error
+            %td= error.stack_trace
+            %td.text-center= error.error_type
+            %td.text-center
+              = link_to '', error, method: :delete, class: 'glyphicon glyphicon-trash text-danger', data: { confirm: t('helpers.links.confirm') }
 

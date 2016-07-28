@@ -1,0 +1,26 @@
+= simple_form_for(@facebook_image) do |f|
+  = f.error_notification
+  - if f.object.errors.any?
+    %ul
+      - f.object.errors.full_messages.each do |msg|
+        %li= msg
+
+  .row.form-group
+    .col-md-4
+      = f.label :name
+      = f.input_field :name, class: 'form-control'
+
+  .row.form-group
+    .col-md-12
+      = f.input :image, as: :file
+    .col-md-12
+      #image
+        - if f.object.image_file_name
+          = image_tag f.object.image.url(:thumb), class: 'img-rounded'
+
+  .row.form-group
+    .col-md-12
+      = f.button :submit
+      = link_to 'Cancel', auto_responders_path, class: 'btn btn-default'
+
+
