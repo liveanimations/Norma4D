@@ -1,6 +1,14 @@
 require "test_helper"
 
-class FacebookImagesControllerTest < ActionController::TestCase
+class FacebookImagesControllerTest < ControllerTest
+  setup do
+    sign_in users(:one)
+  end
+
+  def file
+    fixture_file_upload('/sample_file.jpg', 'image/jpg')
+  end
+
   def facebook_image
     @facebook_image ||= facebook_images :one
   end
@@ -18,7 +26,10 @@ class FacebookImagesControllerTest < ActionController::TestCase
 
   def test_create
     assert_difference("FacebookImage.count") do
-      post :create, facebook_image: { name: facebook_image.name }
+      post :create, facebook_image: {
+                      name: facebook_image.name,
+                      image: file
+                    }
     end
 
     assert_redirected_to facebook_image_path(assigns(:facebook_image))
@@ -35,7 +46,10 @@ class FacebookImagesControllerTest < ActionController::TestCase
   end
 
   def test_update
-    put :update, id: facebook_image, facebook_image: { name: facebook_image.name }
+    put :update, id: facebook_image, facebook_image: {
+                                       name: facebook_image.name,
+                                       image: file
+                                     }
     assert_redirected_to facebook_image_path(assigns(:facebook_image))
   end
 

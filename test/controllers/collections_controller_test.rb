@@ -87,6 +87,11 @@ class CollectionsControllerTest < ControllerTest
   end
 
   test 'should sent push notifications when update' do
+    WebMock.stub_request(:post, "https://gcm-http.googleapis.com/gcm/send")
+    .with(:body => "{\"registration_ids\":[\"7851b3094ec5e7be978c\"],\"data\":\"Раскраска MyString обновлена!\",\"collapse_key\":\"Live Animations\"}",
+      :headers => {'Authorization'=>'key=AIzaSyCJERI_np4k3kwG01w1z_rL7IcWspX-IPc', 'Content-Type'=>'application/json'})
+    .to_return(:status => 200, :body => "", :headers => {})
+
     perform_enqueued_jobs do
       patch :update, params.merge(
         id: @collection,

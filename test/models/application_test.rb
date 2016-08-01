@@ -84,8 +84,7 @@ class ApplicationTest < ActiveSupport::TestCase
       :image2_content_type,
       :image2_file_size,
       :image2_updated_at,
-      :application_id,
-      :url
+      :application_id
     ]
   end
 

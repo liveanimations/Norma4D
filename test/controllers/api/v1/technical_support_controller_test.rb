@@ -34,7 +34,7 @@ class Api::V1::TechnicalSupportControllerTest < ActionController::TestCase
                   application_id: application.id, api_token: api_token
     emails = ActionMailer::Base.deliveries.last(2)
     assert emails.first.body.to_s.include?('Body')
-    assert_equal ['cto@liveanimations.org'], emails.first.to
+    assert_equal ['support@livecoloring.org'], emails.first.to
     assert_response :success
   end
 

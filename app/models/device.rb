@@ -31,13 +31,15 @@ class Device < ActiveRecord::Base
   end
 
   def self.notify_android(application_id, data, collapse_key = nil)
-    gcm = GCM.new(ENV['API_KEY']) # an api key from prerequisites
-    tokens= Device.android.map(&:token) # an array of one or more client registration IDs
-    options = {
-      data: data,
-      collapse_key: collapse_key || 'my_app'
-    }
-    response = gcm.send(tokens, options)
+    gcm = GCM.new(Rails.application.secrets.api_key_android) # an api key from prerequisites
+    tokens = Device.android.map(&:token) # an array of one or more client registration IDs
+    Device.android.each do |device|
+      options = {
+        data: sent_text(data, device),
+        collapse_key: collapse_key || 'Live Animations'
+      }
+      response = gcm.send_notification([device.token], options)
+    end
   end
 
   private

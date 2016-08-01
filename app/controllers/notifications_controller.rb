@@ -53,7 +53,7 @@ class NotificationsController < ApplicationController
 
   def push
     NotifyIosJob.perform_later(@notification.application_id, @notification)
-    # NotifyAndroidJob.perform_later(@notification.application_id, @notification)
+    NotifyAndroidJob.perform_later(@notification.application_id, @notification)
     redirect_to @notification, notice: 'Notification was push.'
   end
 

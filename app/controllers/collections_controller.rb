@@ -21,7 +21,7 @@ class CollectionsController < ApplicationController
     @collection = @application.collections.create(collection_params)
     if @collection.printable
       NotifyIosJob.perform_later(@application.id, 'New collection was added')
-      # NotifyAndroidJob.perform_later(@application.id, 'New collection was added')
+      NotifyAndroidJob.perform_later(@application.id, 'New collection was added')
     end
     respond_with(@application, @collection)
   end
@@ -30,7 +30,7 @@ class CollectionsController < ApplicationController
     @collection.update(collection_params.merge(version: @collection.version + 1))
     if @collection.printable
       NotifyIosJob.perform_later(@application.id, @collection)
-      # NotifyAndroidJob.perform_later(@application.id, "#{@collection.name_ru} was updated")
+      NotifyAndroidJob.perform_later(@application.id, @collection)
     end
     respond_with(@application, @collection)
   end

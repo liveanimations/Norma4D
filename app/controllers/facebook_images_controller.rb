@@ -1,4 +1,6 @@
 class FacebookImagesController < ApplicationController
+  before_action :authenticate_user!, only: [:show, :new, :edit, :create, :update, :destroy]
+  load_and_authorize_resource
   before_action :set_facebook_image, only: [:show, :edit, :update, :destroy]
 
   def index
