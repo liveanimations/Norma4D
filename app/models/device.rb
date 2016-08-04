@@ -35,7 +35,7 @@ class Device < ActiveRecord::Base
     tokens = Device.android.map(&:token) # an array of one or more client registration IDs
     Device.android.each do |device|
       options = {
-        data: sent_text(data, device),
+        data: android_data(data, device),
         collapse_key: collapse_key || 'Live Animations'
       }
       response = gcm.send_notification([device.token], options)
@@ -56,5 +56,28 @@ class Device < ActiveRecord::Base
     else
       data
     end
+  end
+
+  def self.sent_name(data, device)
+    if device.lang == RU_LANG && !data.is_a?(String)
+      data.name_ru
+    elsif device.lang == EN_LANG && !data.is_a?(String)
+      data.name_en
+    else
+      data
+    end
+  end
+
+  def self.android_data(data, device)
+    {
+      body: sent_text(data, device),
+      title: sent_name(data, device),
+      subtitle: sent_text(data, device),
+      tickerText: '',
+      vibrate: 1,
+      sound: 1,
+      largeIcon: 'drawable/large_icon',
+      smallIcon: 'drawable/small_icon'
+    }
   end
 end
