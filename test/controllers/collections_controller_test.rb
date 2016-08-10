@@ -95,9 +95,7 @@ class CollectionsControllerTest < ControllerTest
         subtitle: 'Раскраска MyString обновлена!',
         tickerText: '',
         vibrate: 1,
-        sound: 1,
-        largeIcon: 'drawable/large_icon',
-        smallIcon: 'drawable/small_icon'
+        sound: 1
       },
       collapse_key: 'Live Animations'
     }.to_json

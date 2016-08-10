@@ -75,9 +75,7 @@ class Device < ActiveRecord::Base
       subtitle: sent_text(data, device),
       tickerText: '',
       vibrate: 1,
-      sound: 1,
-      largeIcon: 'drawable/large_icon',
-      smallIcon: 'drawable/small_icon'
+      sound: 1
     }
   end
 end
