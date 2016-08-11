@@ -3,6 +3,11 @@
 one:
   name: Best Application
   auto_responder: one
+  certificate_file_name: sample_file.pem
+  certificate_content_type: application/x-x509-ca-cert
+  certificate_file_size: 223312
+  certificate_updated_at: 2015-02-29 10:30:19 Z
+  android_api_key: 'android_api_key'
 
 two:
   name: MyString

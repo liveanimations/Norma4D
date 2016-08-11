@@ -18,7 +18,8 @@ class Device < ActiveRecord::Base
 
   def self.notify_ios(application_id, data, custom_data = nil)
     apn = Houston::Client.development
-    apn.certificate = File.read(APNClient::CERTIFICATE)
+    application = Application.find(application_id)
+    apn.certificate = File.read(application.certificate.path)
     Device.ios.where(application_id: application_id).each do |device|
       notification = Houston::Notification.new(device: device.token)
       notification.alert = sent_text(data, device)
@@ -31,7 +32,8 @@ class Device < ActiveRecord::Base
   end
 
   def self.notify_android(application_id, data, collapse_key = nil)
-    gcm = GCM.new(Rails.application.secrets.api_key_android) # an api key from prerequisites
+    application = Application.find(application_id)
+    gcm = GCM.new(application.android_api_key) # an api key from prerequisites
     tokens = Device.android.map(&:token) # an array of one or more client registration IDs
     Device.android.each do |device|
       options = {

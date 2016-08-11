@@ -1,6 +1,4 @@
 class APNClient < Houston::Client
-  CERTIFICATE = "#{Rails.root}/public/certificates/apple_push_notification.pem"
-
   def initialize(cert)
     @gateway_uri = Houston::Client.production.gateway_uri
     @feedback_uri = Houston::Client.production.feedback_uri
@@ -9,9 +7,11 @@ class APNClient < Houston::Client
   end
 
   def self.apple_feedback
-    APNClient.new(CERTIFICATE).devices.each do |device_id|
-      device = Device.find_by_token(device_id)
-      device.destroy unless device.nil?
+    Application.all.each do |app|
+      APNClient.new(app.certificate.path).devices.each do |device_id|
+        device = Device.find_by_token(device_id)
+        device.destroy unless device.nil?
+      end
     end
   end
 end

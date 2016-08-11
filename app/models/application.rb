@@ -10,9 +10,7 @@ class Application < ActiveRecord::Base
                     path: ':rails_root/public/files/applications/:id/certificate.:extension'
 
   validates :name, presence: true
-  do_not_validate_attachment_file_type :certificate
-  # TODO: Add validation for .pem file
-  # validates_attachment_content_type :certificate, content_type: 'text/plain'
+  validates_attachment_content_type :certificate, content_type: 'application/x-x509-ca-cert'
 
   def as_json(*)
     {

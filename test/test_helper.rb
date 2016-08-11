@@ -4,6 +4,8 @@ require 'rails/test_help'
 require 'minitest/reporters'
 require 'minitest/mock'
 
+Dir[Rails.root.join('test/support/**/*.rb')].each { |f| require f }
+
 reporter_options = { color: true }
 Minitest::Reporters.use!(
   Minitest::Reporters::DefaultReporter.new(reporter_options),
