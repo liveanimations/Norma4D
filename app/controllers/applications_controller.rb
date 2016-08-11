@@ -63,6 +63,6 @@ class ApplicationsController < ApplicationController
   end
 
   def application_params
-    params.require(:application).permit(:name, :auto_responder_id)
+    params.require(:application).permit(:name, :auto_responder_id, :certificate, :android_api_key)
   end
 end

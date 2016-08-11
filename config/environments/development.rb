@@ -38,4 +38,7 @@ Rails.application.configure do
   config.action_mailer.delivery_method = :file
   # Raises error for missing translations
   # config.action_view.raise_on_missing_translations = true
+  Paperclip.options[:content_type_mappings] = {
+    :pem => "text/plain"
+  }
 end

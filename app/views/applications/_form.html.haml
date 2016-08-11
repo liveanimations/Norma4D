@@ -6,12 +6,23 @@
         %li= msg
 
   .row.form-group
-    .col-md-4
+    .col-md-6
       = f.label :name
       = f.input_field :name, class: 'form-control'
 
   .row.form-group
-    .col-md-4
+    .col-md-3
+      = f.input :certificate, as: :file
+    .col-md-3
+      %h4= @application.certificate_file_name
+
+  .row.form-group
+    .col-md-6
+      = f.label :android_api_key
+      = f.input_field :android_api_key, class: 'form-control'
+
+  .row.form-group
+    .col-md-6
       = f.association :auto_responder, auto_responders: @autoresponders, label_method: :name, value_method: :id, prompt: "Choose a Auto Responder"
 
   .row.form-group

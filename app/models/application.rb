@@ -5,8 +5,14 @@ class Application < ActiveRecord::Base
   has_many :devices, dependent: :destroy
   has_many :notifications, dependent: :destroy
   belongs_to :auto_responder
+  has_attached_file :certificate,
+                    url: '/files/applications/:id/certificate.:extension',
+                    path: ':rails_root/public/files/applications/:id/certificate.:extension'
 
   validates :name, presence: true
+  do_not_validate_attachment_file_type :certificate
+  # TODO: Add validation for .pem file
+  # validates_attachment_content_type :certificate, content_type: 'text/plain'
 
   def as_json(*)
     {

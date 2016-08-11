@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160728064057) do
+ActiveRecord::Schema.define(version: 20160810190452) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -19,11 +19,16 @@ ActiveRecord::Schema.define(version: 20160728064057) do
   create_table "applications", force: :cascade do |t|
     t.string   "name"
     t.text     "description"
-    t.datetime "created_at",        null: false
-    t.datetime "updated_at",        null: false
+    t.datetime "created_at",               null: false
+    t.datetime "updated_at",               null: false
     t.integer  "effect_id"
     t.integer  "collection_id"
     t.integer  "auto_responder_id"
+    t.string   "certificate_file_name"
+    t.string   "certificate_content_type"
+    t.integer  "certificate_file_size"
+    t.datetime "certificate_updated_at"
+    t.string   "android_api_key"
   end
 
   add_index "applications", ["auto_responder_id"], name: "index_applications_on_auto_responder_id", using: :btree

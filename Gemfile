@@ -15,7 +15,7 @@ gem 'haml'
 gem 'responders'
 gem 'simple_form'
 gem 'rmagick'
-gem 'paperclip'
+gem 'paperclip', '~> 4.3.7'
 gem 'rails_12factor', group: :production
 gem 'cancancan'
 gem 'postmark-rails'
