@@ -12,6 +12,7 @@
       %th= 'Name EN'
       %th= 'Text RU'
       %th= 'Text EN'
+      %th= 'Application'
       %th.thin-column= 'Actions'
 
   %tbody
@@ -21,6 +22,7 @@
         %td= link_to notification.name_en, notification
         %td= notification.text_ru
         %td= notification.text_en
+        %td= notification.application.name
         %td.text-center
           .btn-group.btn-group-xs{ role: 'group' }
             %button.btn.btn-default.dropdown-toggle{ data: { toggle: 'dropdown' } }
