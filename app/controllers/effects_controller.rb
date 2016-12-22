@@ -19,11 +19,13 @@ class EffectsController < ApplicationController
 
   def create
     @effect = @application.effects.create(effect_params)
+    generate_pages_for_printing
     respond_with(@application, @effect)
   end
 
   def update
     @effect.update(effect_params.merge(version: @effect.version + 1))
+    generate_pages_for_printing
     respond_with(@application, @effect)
   end
 
@@ -33,41 +35,41 @@ class EffectsController < ApplicationController
   end
 
   def small_icon
-    redirect_to @effect.small_icon.url(:original, false)
+    send_file @effect.small_icon.path
   end
 
   def small_icon_2
-    redirect_to @effect.small_icon_2.url(:original, false)
+    send_file @effect.small_icon_2.path
   end
 
   def large_icon
-    redirect_to @effect.large_icon.url(:original, false)
+    send_file @effect.large_icon.path
   end
 
   def large_icon_2
-    redirect_to @effect.large_icon_2.url(:original, false)
+    send_file @effect.large_icon_2.path
   end
 
   def assets_ios
     @effect.update(ios_count_downloads: @effect.ios_count_downloads + 1)
-    redirect_to @effect.assets_ios.url(:original, false)
+    send_file @effect.assets_ios.path
   end
 
   def assets_android
     @effect.update(android_count_downloads: @effect.android_count_downloads + 1)
-    redirect_to @effect.assets_android.url(:original, false)
+    send_file @effect.assets_android.path
   end
 
   def page_for_printing
-    redirect_to @effect.page_for_printing.url(:original, false)
+    send_file @effect.page_for_printing.path
   end
 
   def dat
-    redirect_to @effect.dat.url(:original, false)
+    send_file @effect.dat.path
   end
 
   def xml
-    redirect_to @effect.xml.url(:original, false)
+    send_file @effect.xml.path
   end
 
   private
@@ -95,7 +97,14 @@ class EffectsController < ApplicationController
         :page_for_printing,
         :dat,
         :xml,
-        :hide
+        :hide,
+        :parent
       )
+    end
+
+    def generate_pages_for_printing
+      if effect_params[:page_for_printing] || effect_params[:collection_id]
+        GeneratePagesForPrinting.perform_later(@application.id, @effect.collection_id)
+      end
     end
 end

@@ -13,25 +13,24 @@
         .pull-left
         .navbar-header
           %a.navbar-brand{ href: applications_path }= 'Norma4D'
+        - if current_user
+          %ul.nav.navbar-nav
+            %li= link_to 'Apllications', applications_path
+            %li= link_to 'Auto Responders', auto_responders_path
+            %li= link_to 'Notifications', notifications_path
+            %li= link_to 'Errors', all_errors_errors_path
+            %li= link_to 'Facebook Images', facebook_images_path
 
-        %ul.nav.navbar-nav
-          %li= link_to 'Apllications', applications_path
-          %li= link_to 'Auto Responders', auto_responders_path
-          %li= link_to 'Notifications', notifications_path
-          %li= link_to 'Errors', errors_path
-          %li= link_to 'Facebook Images', facebook_images_path
-
-        %ul.nav.navbar-nav.navbar-right
-          - if current_user
-            %li.dropdown
-              %a.dropdown-toggle{'data-toggle': 'dropdown', href: '#'}
-                = current_user.email
-                %b.caret
-              %ul.dropdown-menu
-                %li= link_to 'Log out', destroy_user_session_path, method: :delete
-          - else
-            %li= link_to 'Sign up', new_user_registration_path
-            %li= link_to 'Log in', new_user_session_path
+          %ul.nav.navbar-nav.navbar-right
+            - if current_user
+              %li.dropdown
+                %a.dropdown-toggle{'data-toggle': 'dropdown', href: '#'}
+                  = current_user.email
+                  %b.caret
+                %ul.dropdown-menu
+                  %li= link_to 'Log out', destroy_user_session_path, method: :delete
+            - else
+              %li= link_to 'Log in', new_user_session_path
 
     .container
 

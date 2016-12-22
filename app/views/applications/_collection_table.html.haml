@@ -9,6 +9,7 @@
       %th= 'Name RU'
       %th= 'Description'
       %th= 'Hide'
+      %th.thin-column= 'Size'
       %th.thin-column= 'Version'
       %th.thin-column= 'Actions'
 
@@ -19,6 +20,7 @@
           = link_to collection.name_ru, application_collection_path(@application, collection)
         %td= collection.description_ru
         %td= collection.hide? ? 'Yes' : 'No'
+        %td.text-center= collection.size
         %td.text-center= collection.version
         %td.text-center
           .btn-group.btn-group-xs{ role: 'group' }

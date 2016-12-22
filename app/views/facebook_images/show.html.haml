@@ -6,7 +6,7 @@
     = link_to 'Edit', edit_facebook_image_path(@facebook_image), class: 'btn btn-default'
     = link_to 'Back', facebook_images_path, class: 'btn btn-default'
   .col-md-12
-    %h5= "Url: https://#{request.host_with_port}#{@facebook_image.image.url}"
+    %h5= "Url: https://#{request.host_with_port}#{@facebook_image.image.url[0..-12]}"
   .col-md-12
     = image_tag @facebook_image.image.url(:original), class: 'img-rounded'
 

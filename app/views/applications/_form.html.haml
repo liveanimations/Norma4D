@@ -23,6 +23,11 @@
 
   .row.form-group
     .col-md-6
+      = f.label :technical_works
+      = f.input_field :technical_works, class: 'form-control'
+
+  .row.form-group
+    .col-md-6
       = f.association :auto_responder, auto_responders: @autoresponders, label_method: :name, value_method: :id, prompt: "Choose a Auto Responder"
 
   .row.form-group

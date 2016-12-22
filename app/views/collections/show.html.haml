@@ -15,6 +15,11 @@
     %p
       %span.h4= 'Description en: '
       = @collection.description_en
+    
+    %p
+      %span.h4= 'Collection: '
+      - if @collection.collection
+        = @collection.collection.name_ru
 
     %p
       %span.h4= 'Price: '
@@ -31,6 +36,14 @@
     %p
       %span.h4= 'App version: '
       = @collection.app_version
+    
+    %p
+      %span.h4= 'Unhide App version: '
+      = @collection.unhide_app_version
+ 
+    %p
+      %span.h4= 'Sort Index: '
+      = @collection.sort_index
 
     %p
       %span.h4= 'Printable: '
@@ -53,6 +66,12 @@
       %h3= 'Temporary files:'
       %p= @collection.dat_file_name
       %p= @collection.xml_file_name
+    .row
+      %h3= 'Effects:'
+      - @collection.effects.each do |effect|
+        = link_to effect.name_ru + ',', application_effect_path(@application, effect)
+        %span.pl-5
+      
 
 = link_to 'Edit', edit_application_collection_path(@application, @collection), class: 'btn btn-default'
 = link_to 'Back', @application, class: 'btn btn-link'

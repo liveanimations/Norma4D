@@ -6,11 +6,11 @@ module Api
       before_action :set_commercial
 
       def image1
-        redirect_to @commercial.image1.url(:original, false)
+        send_file @commercial.image1.path
       end
 
       def image2
-        redirect_to @commercial.image2.url(:original, false)
+        send_file @commercial.image2.path
       end
 
       private

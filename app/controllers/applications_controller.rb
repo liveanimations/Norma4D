@@ -1,7 +1,7 @@
 class ApplicationsController < ApplicationController
-  before_filter :authenticate_user!, except: :show
-  load_and_authorize_resource
-  before_action :set_application, only: [:show, :edit, :update, :destroy]
+  before_filter :authenticate_user!, except: [:show, :technical_works]
+  load_and_authorize_resource except: :technical_works
+  before_action :set_application, only: [:show, :edit, :update, :destroy, :technical_works]
   before_action :autoresponders, except: [:new, :edit]
 
   def index
@@ -52,6 +52,10 @@ class ApplicationsController < ApplicationController
     end
   end
 
+  def technical_works
+    render json: {status: @application.technical_works}
+  end
+
   private
 
   def autoresponders
@@ -63,6 +67,6 @@ class ApplicationsController < ApplicationController
   end
 
   def application_params
-    params.require(:application).permit(:name, :auto_responder_id, :certificate, :android_api_key)
+    params.require(:application).permit(:name, :auto_responder_id, :certificate, :android_api_key, :technical_works)
   end
 end

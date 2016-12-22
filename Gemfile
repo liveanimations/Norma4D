@@ -22,6 +22,7 @@ gem 'postmark-rails'
 gem 'houston'
 gem 'gcm'
 gem 'iso-639'
+gem 'rubyzip'
 
 # Background processing
 gem 'sidekiq'
@@ -29,7 +30,8 @@ gem 'whenever'
 gem 'sinatra', require: false # for 'sidekiq/web'
 
 group :production do
-  # gem 'unicorn'
+  gem 'unicorn'
+ #  gem 'unicorn-worker-killer'
   gem 'pg'
 end
 

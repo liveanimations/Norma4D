@@ -4,6 +4,7 @@ class FacebookImagesController < ApplicationController
   before_action :set_facebook_image, only: [:show, :edit, :update, :destroy]
 
   def index
+    logger.info "Test logger"
     @facebook_images = FacebookImage.all
   end
 

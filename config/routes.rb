@@ -1,7 +1,9 @@
 Rails.application.routes.draw do
 
   resources :facebook_images
-  resources :errors, except: [:new, :edit]
+  resources :errors, except: [:new, :edit] do
+    get 'all_errors', on: :collection
+  end
   resources :notifications do
     post 'push', on: :member
   end
@@ -12,6 +14,7 @@ Rails.application.routes.draw do
   devise_for :users
 
   resources :applications do
+    get 'technical_works', on: :member
     resources :effects, except: :index do
       get 'small_icon', on: :member
       get 'small_icon_2', on: :member
@@ -32,6 +35,7 @@ Rails.application.routes.draw do
       get 'large_icon_2', on: :member
       get 'dat', on: :member
       get 'xml', on: :member
+      get 'pages_for_print', on: :member
     end
     resources :commercials, except: :index do
       get 'image1', on: :member
@@ -71,10 +75,12 @@ Rails.application.routes.draw do
       resources :errors, only: :create
       post 'devices/create'
       post 'technical_support/create'
+      post 'send_email/create'
     end
   end
 
   require 'sidekiq/web'
+  Sidekiq::Web.set :session_secret, Rails.application.secrets[:secret_key_base]
   authenticate :user, lambda { |u| u.admin? } do
     mount Sidekiq::Web => '/sidekiq'
   end

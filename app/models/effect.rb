@@ -39,4 +39,45 @@ class Effect < ActiveRecord::Base
   validates_attachment_content_type :small_icon, :small_icon_2, :large_icon, :large_icon_2,
   content_type: /\Aimage\/.*\Z/
   scope :avaliable, -> { joins(:collection).where('collections.hide = false').where(hide: false) }
+
+  def size
+    small_icon_size + small_icon_2_size + large_icon_size + large_icon_2_size +
+    dat_size + xml_size + assets_android_size + page_for_printing_size
+  end
+
+  def small_icon_size
+    small_icon_file_size || 0
+  end
+
+  def small_icon_2_size
+    small_icon_2_file_size || 0
+  end
+
+  def large_icon_size
+    large_icon_file_size || 0
+  end
+
+  def large_icon_2_size
+    large_icon_2_file_size || 0
+  end
+
+  def assets_ios_size
+    assets_ios_file_size || 0
+  end
+
+  def assets_android_size
+    assets_android_file_size || 0
+  end
+
+  def page_for_printing_size
+    page_for_printing_file_size || 0
+  end
+
+  def xml_size
+    xml_file_size || 0
+  end
+
+  def dat_size
+    dat_file_size || 0
+  end
 end

@@ -1,0 +1,21 @@
+# Logfile created on 2016-08-18 06:31:12 -0400 by logger.rb/47272
+2016-08-18T10:31:12.035Z 5310 TID-42xec INFO: ==================================================================
+2016-08-18T10:31:12.035Z 5310 TID-42xec INFO:   Please point sidekiq to a Rails 3/4 application or a Ruby file  
+2016-08-18T10:31:12.035Z 5310 TID-42xec INFO:   to load your worker classes with -r [DIR|FILE].
+2016-08-18T10:31:12.035Z 5310 TID-42xec INFO: ==================================================================
+2016-08-18T10:31:12.035Z 5310 TID-42xec INFO: sidekiq [options]
+    -c, --concurrency INT            processor threads to use
+    -d, --daemon                     Daemonize process
+    -e, --environment ENV            Application environment
+    -g, --tag TAG                    Process tag for procline
+    -i, --index INT                  unique process index on this machine
+    -q, --queue QUEUE[,WEIGHT]       Queues to process with optional weights
+    -r, --require [PATH|DIR]         Location of Rails application with workers or file to require
+    -t, --timeout NUM                Shutdown timeout
+    -v, --verbose                    Print more verbose output
+    -C, --config PATH                path to YAML config file
+    -L, --logfile PATH               path to writable logfile
+    -P, --pidfile PATH               path to pidfile
+    -V, --version                    Print version and exit
+    -h, --help                       Show help
+

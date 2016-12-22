@@ -1,4 +1,5 @@
 class AutoRespondersController < ApplicationController
+  before_filter :authenticate_user!
   before_action :set_auto_responder, only: [:show, :edit, :update, :destroy]
 
   # GET /auto_responders

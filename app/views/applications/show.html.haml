@@ -1,6 +1,11 @@
 .row.action-name-row-wrap
   .col-md-11
-    %h1= @application.name
+    %h1
+      = @application.name
+      %span
+        (
+        = Device.where(application_id: @application.id).android.count
+        )
   .back-btn-col-wrap.mt-20
     = link_to 'Back', applications_path
   .container

@@ -6,35 +6,35 @@ module Api
       before_action :set_collection
 
       def small_icon
-        redirect_to @collection.small_icon.url(:original, false)
+        send_file @collection.small_icon.path
       end
 
       def small_icon_2
-        redirect_to @collection.small_icon_2.url(:original, false)
+        send_file @collection.small_icon_2.path
       end
 
       def medium_icon
-        redirect_to @collection.medium_icon.url(:original, false)
+        send_file @collection.medium_icon.path
       end
 
       def medium_icon_2
-        redirect_to @collection.medium_icon_2.url(:original, false)
+        send_file @collection.medium_icon_2.path
       end
 
       def large_icon
-        redirect_to @collection.large_icon.url(:original, false)
+        send_file @collection.large_icon.path
       end
 
       def large_icon_2
-        redirect_to @collection.large_icon_2.url(:original, false)
+        send_file @collection.large_icon_2.path
       end
 
       def dat
-        redirect_to @collection.dat.url(:original, false)
+        send_file @collection.dat.path
       end
 
       def xml
-        redirect_to @collection.xml.url(:original, false)
+        send_file @collection.xml.path
       end
 
       private

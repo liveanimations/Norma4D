@@ -1,7 +1,7 @@
 class ErrorsController < ApplicationController
-  skip_before_action :verify_authenticity_token, only: :create
-  before_filter :authenticate_user!, except: :create
-  load_and_authorize_resource except: :create
+  skip_before_action :verify_authenticity_token, only: [:create, :index]
+  before_filter :authenticate_user!, except: [:create, :index]
+  load_and_authorize_resource except: [:create, :index]
   before_action :set_error, only: [:show, :edit, :update, :destroy]
 
   respond_to :html, :json
@@ -9,7 +9,12 @@ class ErrorsController < ApplicationController
   # GET /errors
   # GET /errors.json
   def index
-    @errors = Error.all
+    # @error = Error.create(error_params)
+    render nothing: true
+  end
+
+  def all_errors
+    # @errors = Error.all
   end
 
   # GET /errors/1
@@ -20,7 +25,7 @@ class ErrorsController < ApplicationController
   # POST /errors
   # POST /errors.json
   def create
-    @error = Error.create(error_params)
+    # @error = Error.create(error_params)
     render nothing: true
   end
 

@@ -26,6 +26,10 @@
       = @effect.version
 
     %p
+      %span.h4= 'Parent: '
+      = @effect.parent
+
+    %p
       %span.h4= 'Hide: '
       = @effect.hide? ? 'Yes' : 'No'
 
@@ -46,9 +50,17 @@
     .row
       %h3= 'Assets iOS:'
       %p= @effect.assets_ios_file_name
+      %p
+        - if @effect.assets_ios_file_size
+          = (@effect.assets_ios_file_size / (1024.0 * 1024.0)).round(2)
+          %span= 'Mb'
     .row
       %h3= 'Assets Android:'
       %p= @effect.assets_android_file_name
+      %p
+        - if @effect.assets_android_file_size
+          = (@effect.assets_android_file_size / (1024.0 * 1024.0)).round(2)
+          %span= 'Mb'
     .row
       %h3= 'Page for printing:'
       %p= @effect.page_for_printing_file_name

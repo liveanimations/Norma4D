@@ -4,7 +4,11 @@ module Api
       before_action :verify_token
 
       def create
-        @device = Device.create(device_params)
+        if device = Device.find_by(token: device_params[:token])
+          device.update(device_params)
+        else
+          Device.create(device_params)
+        end
         render text: 'OK'
       end
 

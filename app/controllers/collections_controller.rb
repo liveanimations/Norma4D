@@ -20,8 +20,8 @@ class CollectionsController < ApplicationController
   def create
     @collection = @application.collections.create(collection_params)
     if @collection.printable
-      NotifyIosJob.perform_later(@application.id, 'New collection was added')
-      NotifyAndroidJob.perform_later(@application.id, 'New collection was added')
+      # NotifyIosJob.perform_later(@application.id, 'New collection was added')
+      # NotifyAndroidJob.perform_later(@application.id, 'New collection was added')
     end
     respond_with(@application, @collection)
   end
@@ -29,8 +29,8 @@ class CollectionsController < ApplicationController
   def update
     @collection.update(collection_params.merge(version: @collection.version + 1))
     if @collection.printable
-      NotifyIosJob.perform_later(@application.id, @collection)
-      NotifyAndroidJob.perform_later(@application.id, @collection)
+      # NotifyIosJob.perform_later(@application.id, @collection)
+      # NotifyAndroidJob.perform_later(@application.id, @collection)
     end
     respond_with(@application, @collection)
   end
@@ -41,35 +41,39 @@ class CollectionsController < ApplicationController
   end
 
   def small_icon
-    redirect_to @collection.small_icon.url(:original, false)
+    send_file @collection.small_icon.path
   end
 
   def small_icon_2
-    redirect_to @collection.small_icon_2.url(:original, false)
+    send_file @collection.small_icon_2.path
   end
 
   def medium_icon
-    redirect_to @collection.medium_icon.url(:original, false)
+    send_file @collection.medium_icon.path
   end
 
   def medium_icon_2
-    redirect_to @collection.medium_icon_2.url(:original, false)
+    send_file @collection.medium_icon_2.path
   end
 
   def large_icon
-    redirect_to @collection.large_icon.url(:original, false)
+    send_file @collection.large_icon.path
   end
 
   def large_icon_2
-    redirect_to @collection.large_icon_2.url(:original, false)
+    send_file @collection.large_icon_2.path
   end
 
   def dat
-    redirect_to @collection.dat.url(:original, false)
+    send_file @collection.dat.path
   end
 
   def xml
-    redirect_to @collection.xml.url(:original, false)
+    send_file @collection.xml.path
+  end
+
+  def pages_for_print
+    send_file "public/files/collections/#{@collection.id}/pages_for_printing.zip"
   end
 
   private
@@ -100,7 +104,10 @@ class CollectionsController < ApplicationController
       :app_version,
       :dat,
       :xml,
-      :hide
+      :hide,
+      :sort_index,
+      :collection_id,
+      :unhide_app_version
     )
   end
 end
