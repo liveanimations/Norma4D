@@ -104,8 +104,13 @@ class EffectsController < ApplicationController
     end
 
     def generate_pages_for_printing
-      if effect_params[:page_for_printing] || effect_params[:collection_id]
-        GeneratePagesForPrinting.perform_later(@application.id, @effect.collection_id)
+      if effect_params[:page_for_printing] || effect_params[:collection_id] || effect_params[:extended]
+        GeneratePagesForPrinting.perform_later(
+          @application.id, @effect.collection_id, @effect.extended
+        )
+        GeneratePagesForPrinting.perform_later(
+          @application.id, @effect.collection_id, !@effect.extended
+        )
       end
     end
 end
