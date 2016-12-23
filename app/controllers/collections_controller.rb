@@ -76,6 +76,10 @@ class CollectionsController < ApplicationController
     send_file "public/files/collections/#{@collection.id}/pages_for_printing.zip"
   end
 
+  def extended_pages_for_print
+    send_file "public/files/collections/#{@collection.id}/extended_pages_for_printing.zip"
+  end
+
   private
 
   def find_application

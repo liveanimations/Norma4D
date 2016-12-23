@@ -36,6 +36,7 @@ Rails.application.routes.draw do
       get 'dat', on: :member
       get 'xml', on: :member
       get 'pages_for_print', on: :member
+      get 'extended_pages_for_print', on: :member
     end
     resources :commercials, except: :index do
       get 'image1', on: :member
