@@ -30,6 +30,10 @@
       = @effect.parent
 
     %p
+      %span.h4= 'Extended: '
+      = @effect.extended? ? 'Yes' : 'No'
+
+    %p
       %span.h4= 'Hide: '
       = @effect.hide? ? 'Yes' : 'No'
 

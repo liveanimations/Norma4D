@@ -98,7 +98,8 @@ class EffectsController < ApplicationController
         :dat,
         :xml,
         :hide,
-        :parent
+        :parent,
+        :extended
       )
     end
 

@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160810190452) do
+ActiveRecord::Schema.define(version: 20161223124533) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -19,8 +19,8 @@ ActiveRecord::Schema.define(version: 20160810190452) do
   create_table "applications", force: :cascade do |t|
     t.string   "name"
     t.text     "description"
-    t.datetime "created_at",               null: false
-    t.datetime "updated_at",               null: false
+    t.datetime "created_at",                               null: false
+    t.datetime "updated_at",                               null: false
     t.integer  "effect_id"
     t.integer  "collection_id"
     t.integer  "auto_responder_id"
@@ -29,6 +29,7 @@ ActiveRecord::Schema.define(version: 20160810190452) do
     t.integer  "certificate_file_size"
     t.datetime "certificate_updated_at"
     t.string   "android_api_key"
+    t.boolean  "technical_works",          default: false
   end
 
   add_index "applications", ["auto_responder_id"], name: "index_applications_on_auto_responder_id", using: :btree
@@ -88,9 +89,13 @@ ActiveRecord::Schema.define(version: 20160810190452) do
     t.string   "xml_content_type"
     t.integer  "xml_file_size"
     t.datetime "xml_updated_at"
+    t.integer  "sort_index",                 default: 0
+    t.integer  "collection_id"
+    t.decimal  "unhide_app_version",         default: 0.0
   end
 
   add_index "collections", ["application_id"], name: "index_collections_on_application_id", using: :btree
+  add_index "collections", ["collection_id"], name: "index_collections_on_collection_id", using: :btree
 
   create_table "commercials", force: :cascade do |t|
     t.datetime "created_at",                      null: false
@@ -178,6 +183,8 @@ ActiveRecord::Schema.define(version: 20160810190452) do
     t.boolean  "hide",                           default: false
     t.integer  "ios_count_downloads",            default: 0
     t.integer  "android_count_downloads",        default: 0
+    t.integer  "parent"
+    t.boolean  "extended",                       default: false
   end
 
   add_index "effects", ["application_id"], name: "index_effects_on_application_id", using: :btree
@@ -340,6 +347,7 @@ ActiveRecord::Schema.define(version: 20160810190452) do
   add_foreign_key "applications", "collections"
   add_foreign_key "applications", "effects"
   add_foreign_key "collections", "applications"
+  add_foreign_key "collections", "collections"
   add_foreign_key "commercials", "applications"
   add_foreign_key "commercials", "collections"
   add_foreign_key "devices", "applications"

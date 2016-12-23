@@ -39,11 +39,16 @@
         .col-md-12
           = f.label :hide
           = f.input_field :hide, as: :boolean, class: 'form-control'
-      
+
       .row.form-group
         .col-md-12
           = f.label :parent
           = f.input_field :parent, class: 'form-control'
+
+      .row.form-group
+        .col-md-12
+          = f.label :extended
+          = f.input_field :extended, class: 'form-control'
 
     .col-md-8
       .row.form-group
