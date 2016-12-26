@@ -24,7 +24,8 @@ gem 'houston'
 gem 'gcm'
 gem 'iso-639'
 gem 'rubyzip'
-gem "net-ssh", "~> 2.7.0"
+gem "net-ssh"
+gem 'sshkit', github: 'capistrano/sshkit'
 
 # Background processing
 gem 'sidekiq'
