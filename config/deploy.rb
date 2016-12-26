@@ -1,9 +1,9 @@
 # Change these
-server '188.166.15.132', port: 4321, roles: [:web, :app, :db], primary: true
+server '104.131.66.96', port: 2424, roles: [:web, :app, :db], primary: true
 
-set :repo_url,        'git@github.com:Magons/Norma4D.git'
+set :repo_url,        'git@github.com:liveanimations/Norma4D.git'
 set :application,     'Norma4D'
-set :user,            'deploy'
+set :user,            'deployer'
 set :puma_threads,    [4, 16]
 set :puma_workers,    0
 

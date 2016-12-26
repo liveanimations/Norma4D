@@ -41,7 +41,7 @@ module Api
                             end
         end
       end
-      
+
       def set_application
         @application = Application.find(requred_params[:application_id])
       end
@@ -50,10 +50,14 @@ module Api
         if @auto_responder.id.in?([116, 124, 123])
           @auto_responder.content.sub! 'COLORING_ID', requred_params[:coloring_id]
         elsif @auto_responder.id.in?([125, 126])
-          @auto_responder.content.sub! 'COLLECTION_ID', requred_params[:collection_id]
+          (@auto_responder.content.sub! 'COLLECTION_ID', requred_params[:collection_id]).sub! 'TYPE', zipfile_name
         else
           @auto_responder.content
         end
+      end
+
+      def zipfile_name
+        requred_params[:extended] == '1' ? 'extended_pages_for_print' : 'pages_for_print'
       end
 
       def collect_email

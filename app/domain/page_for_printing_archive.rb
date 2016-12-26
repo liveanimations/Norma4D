@@ -1,13 +1,14 @@
 require 'zip'
 
 class PageForPrintingArchive
-  def initialize(app_id, collection_id, extended = false)
+  def initialize(app_id, collection_id, extended)
     @app_id = app_id
     @collection_id = collection_id
     @extended = extended
   end
 
   def perform
+    FileUtils.rm_rf(zipfile)
     ZipFileGenerator.new(input_filenames, zipfile).write
   end
 
@@ -26,10 +27,16 @@ class PageForPrintingArchive
   end
 
   def input_filenames
-    collection.effects
-              .where.not(page_for_printing_file_name: nil)
-              .where(extended: @extended).map do |effect|
+    effects.map do |effect|
       effect.page_for_printing.path
+    end
+  end
+
+  def effects
+    if @extended
+      collection.effects.where.not(page_for_printing_file_name: nil)
+    else
+      collection.effects.where.not(page_for_printing_file_name: nil).where(extended: false)
     end
   end
 
