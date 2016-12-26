@@ -336,6 +336,7 @@ DEPENDENCIES
   minitest-reporters
   minitest-stub-const
   mocha
+  net-ssh
   paperclip (~> 4.3.7)
   pg
   phantomjs

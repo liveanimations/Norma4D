@@ -24,6 +24,7 @@ gem 'houston'
 gem 'gcm'
 gem 'iso-639'
 gem 'rubyzip'
+gem 'net-ssh'
 
 # Background processing
 gem 'sidekiq'
