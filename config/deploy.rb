@@ -1,5 +1,5 @@
 # Change these
-server '104.131.66.96', port: 2424, roles: [:web, :app, :db], primary: true
+server '104.236.114.57', port: 22, roles: [:web, :app, :db], primary: true
 
 set :repo_url,        'git@github.com:liveanimations/Norma4D.git'
 set :application,     'Norma4D'
