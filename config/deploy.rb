@@ -33,7 +33,8 @@ set :puma_init_active_record, true  # Change to false when not using ActiveRecor
 
 ## Linked Files & Directories (Default None):
 set :linked_files, %w{config/database.yml config/secrets.yml}
-set :linked_dirs,  %w{public/files public/certificates}
+set :linked_dirs,  %w{log tmp/pids tmp/cache tmp/sockets vendor/bundle public/files public/certificates}
+set :rbenv_map_bins, %w{rake gem bundle ruby rails sidekiq sidekiqctl}
 
 namespace :puma do
   desc 'Create Directories for Puma Pids and Socket'
