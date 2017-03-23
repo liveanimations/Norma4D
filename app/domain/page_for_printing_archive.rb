@@ -1,7 +1,7 @@
 require 'zip'
 
 class PageForPrintingArchive
-  def initialize(app_id, collection_id, extended)
+  def initialize(app_id, collection_id, extended = false)
     @app_id = app_id
     @collection_id = collection_id
     @extended = extended
@@ -26,6 +26,10 @@ class PageForPrintingArchive
     "#{Rails.root}/public/files/collections/#{@collection_id}/#{zipfile_name}.zip"
   end
 
+  def zipfile_name
+    @extended ? 'extended_pages_for_printing' : 'pages_for_printing'
+  end
+
   def input_filenames
     effects.map do |effect|
       effect.page_for_printing.path
@@ -38,9 +42,5 @@ class PageForPrintingArchive
     else
       collection.effects.where.not(page_for_printing_file_name: nil).where(extended: false)
     end
-  end
-
-  def zipfile_name
-    @extended ? 'extended_pages_for_printing' : 'pages_for_printing'
   end
 end

@@ -9,7 +9,7 @@ module Api
         email = requred_params[:email]
         message = requred_params[:message]
         TechnicalSupportMailer.support_ticket(email, message, @application).deliver_now
-        AutoRespondMailer.respond(email, @auto_responder.content, @application.name).deliver_now if @auto_responder
+        AutoRespondMailer.respond(email, @auto_responder.content, @application).deliver_now if @auto_responder
         render nothing: true
       end
 

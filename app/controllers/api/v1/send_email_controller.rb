@@ -8,14 +8,14 @@ module Api
 
       def create
         email = requred_params[:email]
-        AutoRespondMailer.respond(email, content, @application.name).deliver_now if @auto_responder
+        AutoRespondMailer.respond(email, content, @application).deliver_now if @auto_responder
         render nothing: true
       end
 
       private
 
       def requred_params
-        params.permit(:email, :lang, :application_id, :coloring_id, :collection_id)
+        params.permit(:email, :lang, :application_id, :coloring_id, :collection_id, :extended)
       end
 
       def set_auto_respond
@@ -24,6 +24,12 @@ module Api
                               AutoResponder.find(115)
                             else
                               AutoResponder.find(114)
+                            end
+        elsif @application.id == 12
+          @auto_responder = if requred_params[:lang].in?(%w(RU UK BE KK))
+                              AutoResponder.find(125)
+                            else
+                              AutoResponder.find(127)
                             end
         elsif @application.id == 2
           @auto_responder = if requred_params[:lang].in?(%w(RU UK BE KK))
@@ -41,7 +47,7 @@ module Api
                             end
         end
       end
-
+      
       def set_application
         @application = Application.find(requred_params[:application_id])
       end
@@ -49,13 +55,13 @@ module Api
       def content
         if @auto_responder.id.in?([116, 124, 123])
           @auto_responder.content.sub! 'COLORING_ID', requred_params[:coloring_id]
-        elsif @auto_responder.id.in?([125, 126])
+        elsif @auto_responder.id.in?([125, 126, 127])
           (@auto_responder.content.sub! 'COLLECTION_ID', requred_params[:collection_id]).sub! 'TYPE', zipfile_name
         else
           @auto_responder.content
         end
       end
-
+      
       def zipfile_name
         requred_params[:extended] == '1' ? 'extended_pages_for_print' : 'pages_for_print'
       end
