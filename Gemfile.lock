@@ -121,6 +121,7 @@ GEM
     gcm (0.1.1)
       httparty
       json
+    geocoder (1.4.4)
     globalid (0.3.7)
       activesupport (>= 4.1.0)
     haml (4.0.7)
@@ -332,6 +333,7 @@ DEPENDENCIES
   coffee-rails (~> 4.1.0)
   devise
   gcm
+  geocoder
   haml
   houston
   iso-639
@@ -371,4 +373,4 @@ RUBY VERSION
    ruby 2.2.1p85
 
 BUNDLED WITH
-   1.12.5
+   1.14.6

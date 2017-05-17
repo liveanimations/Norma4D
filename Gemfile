@@ -26,6 +26,7 @@ gem 'iso-639'
 gem 'rubyzip'
 gem "net-ssh"
 gem 'sshkit', github: 'capistrano/sshkit'
+gem 'geocoder'
 
 # Background processing
 gem 'sidekiq'
