@@ -3,7 +3,7 @@ class ApplicationController < ActionController::Base
   # For APIs, you may want to use :null_session instead.
   protect_from_forgery with: :exception
 
-  before_action :redirect_to_india_server
+  # before_action :redirect_to_india_server
 
   rescue_from Postmark::InvalidMessageError do |exception|
     AutoRespondMailer.respond('cto@liveanimations.org', exception, Application.find(5)).deliver_now
@@ -24,7 +24,7 @@ class ApplicationController < ActionController::Base
       if request.location.try(:country).in?(['India', 'Thailand'])
         logger.info "This CLIENT redirected"
         if request.path.match(/\/applications\/\d+\/(collections|effects)\/\d+\//)
-          redirect_to "http://india-api.liveanimations.org#{request.path}"
+          redirect_to "https://india-api.liveanimations.org#{request.path}"
         end
       end
     end
