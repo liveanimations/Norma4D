@@ -1,6 +1,6 @@
 module Api
   class BaseController < ActionController::Base
-    # before_action :redirect_to_india_server
+    before_action :redirect_to_india_server
 
     private
 
@@ -19,7 +19,9 @@ module Api
         logger.info "This CLIENT from #{request.location.try(:country)}"
         if request.location.try(:country).in?(['India', 'Thailand'])
           logger.info "This CLIENT redirected"
-          redirect_to "http://139.59.27.226#{request.path}"
+          if request.path.match(/\/api\/v1\/applications/)
+            redirect_to "http://india-api.liveanimations.org#{request.path}"
+          end
         end
       end
     end
