@@ -1,4 +1,5 @@
 Geocoder.configure(
+  http_headers: { 'Accept-Encoding' => 'json' },
   # Geocoding options
   timeout: 40,                 # geocoding service timeout (secs)
   lookup: :google,            # name of geocoding service (symbol)

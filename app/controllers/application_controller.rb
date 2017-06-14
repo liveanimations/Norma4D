@@ -20,7 +20,7 @@ class ApplicationController < ActionController::Base
 
   def redirect_to_india_server
     if Rails.env.production?
-      logger.info "This CLIENT from #{request.location.try(:country)}"
+      logger.info "This CLIENT '#{request.remote_ip}' from #{request.location.try(:country)}"
       if request.location.try(:country).in?(['India', 'Thailand'])
         if request.remote_ip == '115.124.99.87'
           logger.info "INDIA SERVER CLIENT"
