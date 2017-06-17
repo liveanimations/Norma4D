@@ -2,9 +2,10 @@ Geocoder.configure(
   http_headers: { 'Accept-Encoding' => 'json' },
   # Geocoding options
   timeout: 40,                 # geocoding service timeout (secs)
-  lookup: :google,            # name of geocoding service (symbol)
-  ip_lookup: :freegeoip,      # name of IP address geocoding service (symbol)
-  language: :en               # ISO-639 language code
+  lookup: :google,             # name of geocoding service (symbol)
+  ip_lookup: :freegeoip,       # name of IP address geocoding service (symbol)
+  language: :en,               # ISO-639 language code
+  cache: Redis.new
   # use_https: false,           # use HTTPS for lookup requests? (if supported)
   # http_proxy: nil,            # HTTP proxy server (user:pass@host:port)
   # https_proxy: nil,           # HTTPS proxy server (user:pass@host:port)
