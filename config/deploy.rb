@@ -1,11 +1,8 @@
-# Change these
-server '104.236.114.57', port: 2424, roles: [:web, :app, :db], primary: true
-
 set :repo_url,        'git@github.com:liveanimations/Norma4D.git'
 set :application,     'Norma4D'
 set :user,            'deployer'
-set :puma_threads,    [4, 16]
-set :puma_workers,    4
+set :puma_threads,    [1, 1]
+set :puma_workers,    8
 
 # Don't change these unless you know what you're doing
 set :pty,             true
@@ -18,18 +15,9 @@ set :puma_state,      "#{shared_path}/tmp/pids/puma.state"
 set :puma_pid,        "#{shared_path}/tmp/pids/puma.pid"
 set :puma_access_log, "#{release_path}/log/puma.access.log"
 set :puma_error_log,  "#{release_path}/log/puma.error.log"
-set :ssh_options,     { forward_agent: true, user: fetch(:user), keys: %w(~/.ssh/id_rsa.pub) }
 set :puma_preload_app, true
 set :puma_worker_timeout, nil
 set :puma_init_active_record, true  # Change to false when not using ActiveRecord
-# set :linked_files, fetch(:linked_files, []).push('config/database.yml')
-
-## Defaults:
-# set :scm,           :git
-# set :branch,        :master
-# set :format,        :pretty
-# set :log_level,     :debug
-# set :keep_releases, 5
 
 ## Linked Files & Directories (Default None):
 set :linked_files, %w{config/database.yml config/secrets.yml}
@@ -71,8 +59,7 @@ namespace :deploy do
   task :initial do
     on roles(:app) do
       before 'deploy:restart', 'puma:start'
-      execute "mkdir #{shared_path}/config -p"
-      upload! StringIO.new(File.read("config/database.yml")), "#{shared_path}/config/database.yml"
+      invoke 'upload_yml'
       invoke 'deploy'
     end
   end
@@ -89,7 +76,3 @@ namespace :deploy do
   after  :finishing,    :cleanup
   after  :finishing,    :restart
 end
-
-# ps aux | grep puma    # Get puma pid
-# kill -s SIGUSR2 pid   # Restart puma
-# kill -s SIGTERM pid   # Stop puma

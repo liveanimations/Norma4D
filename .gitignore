@@ -17,3 +17,5 @@ config/secrets.yml
 public/files
 public/assets
 .byebug_history
+.DS_Store
+/.idea/
