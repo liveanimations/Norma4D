@@ -37,6 +37,25 @@ namespace :puma do
 end
 
 namespace :deploy do
+
+  namespace :nginx do
+    desc 'Reload nginx configuration'
+    task :reload do
+      on roles [:web] do
+        sudo :kill, "-s HUP `cat /run/nginx.pid`"
+      end
+    end
+
+    desc 'Copy nginx config (requires sudo)'
+    task :symlink_config do
+      on roles [:web] do
+        within release_path do
+          sudo :cp, '-f', "config/nginx.conf", '/etc/nginx/nginx.conf'
+        end
+      end
+    end
+  end
+
   desc "Make sure local git is in sync with remote."
   task :check_revision do
     on roles(:app) do
@@ -64,15 +83,9 @@ namespace :deploy do
     end
   end
 
-  desc 'Restart application'
-  task :restart do
-    on roles(:app), in: :sequence, wait: 5 do
-      invoke 'puma:restart'
-    end
-  end
-
   before :starting,     :check_revision
+  after 'deploy:updated', 'deploy:nginx:symlink_config'
+  after 'deploy:updated', 'deploy:nginx:reload'
   after  :finishing,    :compile_assets
   after  :finishing,    :cleanup
-  after  :finishing,    :restart
 end
