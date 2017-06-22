@@ -1,10 +1,14 @@
 class Collection < ActiveRecord::Base
+  include CacheInvalidatable
+
   MEGABYTE = 1024.0 * 1024.0  
+
   belongs_to :application
   has_many :effects, dependent: :nullify
   has_many :commercials, dependent: :nullify
   has_many :collections, dependent: :nullify
   belongs_to :collection
+
   has_attached_file :small_icon, styles: { medium: '300x300>', thumb: '140x140>' },
                     url: '/files/collections/:id/small_icon/:style/small_icon.:extension',
                     path: ':rails_root/public/files/collections/:id/small_icon/:style/small_icon.:extension'
@@ -42,6 +46,9 @@ class Collection < ActiveRecord::Base
   validates :version, numericality: { greater_than_or_equal_to: 1 }
   validates :price, presence: true
   scope :avaliable, -> { where(hide: false) }
+
+  cache_invalidatable jpeg_attachments: %w(small_icon small_icon_2 large_icon large_icon_2 medium_icon medium_icon_2),
+                      other_attachments: %w(xml dat)
   
   def size
     collection_size = small_icon_size + small_icon_2_size + medium_icon_size +

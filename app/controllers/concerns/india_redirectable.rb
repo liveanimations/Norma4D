@@ -15,7 +15,7 @@ module IndiaRedirectable
               geo = MaxmindDB.lookup(remote_ip)
               if geo.found? && geo.country.name.in?(%w(India))
                 logger.info "This client (IP: #{remote_ip}, country: #{geo.country.name}) is redirected to India VPS"
-                redirect_to "https://india-api.liveanimations.org#{request.path}"
+                redirect_to "#{Rails.application.secrets.india_server_url}#{request.path}"
               end
             end
           end
