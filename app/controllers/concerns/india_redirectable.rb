@@ -13,7 +13,7 @@ module IndiaRedirectable
           else
             if request.path.match(path_regexp)
               geo = MaxmindDB.lookup(remote_ip)
-              if geo.found? && geo.country.name.in?(%w(India Thailand))
+              if geo.found? && geo.country.name.in?(%w(India))
                 logger.info "This client (IP: #{remote_ip}, country: #{geo.country.name}) is redirected to India VPS"
                 redirect_to "https://india-api.liveanimations.org#{request.path}"
               end
