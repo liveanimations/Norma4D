@@ -18,6 +18,7 @@ server '104.236.114.57',
          keys: %w(~/.ssh/id_rsa.pub)
        }
 
+server '115.124.99.87', user: 'root', roles: %w(proxy)
 
 # role-based syntax
 # ==================

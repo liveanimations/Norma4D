@@ -3,6 +3,7 @@ set :application,     'Norma4D'
 set :user,            'deployer'
 set :puma_threads,    [1, 1]
 set :puma_workers,    8
+set :rvm_roles,       [:app] # to skip the check at india vps server
 
 # Don't change these unless you know what you're doing
 set :pty,             true
@@ -22,7 +23,6 @@ set :puma_init_active_record, true  # Change to false when not using ActiveRecor
 ## Linked Files & Directories (Default None):
 set :linked_files, %w{config/database.yml config/secrets.yml}
 set :linked_dirs,  %w{log geo tmp/pids tmp/cache tmp/sockets vendor/bundle public/files public/certificates}
-set :rbenv_map_bins, %w{rake gem bundle ruby rails sidekiq sidekiqctl}
 
 namespace :puma do
   desc 'Create Directories for Puma Pids and Socket'
@@ -37,31 +37,35 @@ namespace :puma do
 end
 
 namespace :deploy do
-
   namespace :nginx do
-    desc 'Reload nginx configuration'
-    task :reload do
-      on roles [:web] do
-        sudo :kill, "-s HUP `cat /run/nginx.pid`"
+    desc 'Update nginx configuration'
+    task :update_config do
+      on roles(:web) do
+        within release_path do
+          sudo :cp, '-f', 'config/nginx.conf', '/etc/nginx/nginx.conf'
+          puts capture('sudo nginx -t')
+          sudo :kill, '-s HUP `cat /run/nginx.pid`'
+        end
       end
     end
 
-    desc 'Copy nginx config (requires sudo)'
-    task :symlink_config do
-      on roles [:web] do
-        within release_path do
-          sudo :cp, '-f', "config/nginx.conf", '/etc/nginx/nginx.conf'
-        end
+    desc 'Update nginx config at India VPS'
+    task :update_india_config do
+      on roles(:proxy) do
+        upload! StringIO.new(File.read('config/nginx.india.conf')), '/tmp/nginx.conf' # NB this uploads your local file! not form git repo
+        execute :cp, '-f', '/tmp/nginx.conf', '/etc/nginx/nginx.conf'
+        puts capture('nginx -t')
+        execute :kill, '-s HUP `cat /run/nginx.pid`'
       end
     end
   end
 
-  desc "Make sure local git is in sync with remote."
+  desc 'Make sure local git is in sync with remote.'
   task :check_revision do
     on roles(:app) do
       unless `git rev-parse HEAD` == `git rev-parse origin/master`
-        puts "WARNING: HEAD is not the same as origin/master"
-        puts "Run `git push` to sync changes."
+        puts 'WARNING: HEAD is not the same as origin/master'
+        puts 'Run `git push` to sync changes.'
         exit
       end
     end
@@ -70,7 +74,7 @@ namespace :deploy do
   task :upload_yml do
     on roles(:app) do
       execute "mkdir #{shared_path}/config -p"
-      upload! StringIO.new(File.read("config/database.yml")), "#{shared_path}/config/database.yml"
+      upload! StringIO.new(File.read('config/database.yml')), "#{shared_path}/config/database.yml"
     end
   end
 
@@ -84,8 +88,8 @@ namespace :deploy do
   end
 
   before :starting,     :check_revision
-  after 'deploy:updated', 'deploy:nginx:symlink_config'
-  after 'deploy:updated', 'deploy:nginx:reload'
+  after 'deploy:updated', 'deploy:nginx:update_config'
+  after 'deploy:updated', 'deploy:nginx:update_india_config'
   after  :finishing,    :compile_assets
   after  :finishing,    :cleanup
 end
