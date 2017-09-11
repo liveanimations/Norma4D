@@ -1,6 +1,9 @@
 class Effect < ActiveRecord::Base
+  include CacheInvalidatable
+
   belongs_to :application
   belongs_to :collection
+
   has_attached_file :small_icon, styles: { medium: '300x300>', thumb: '140x140>' },
                     url: '/files/effects/:id/small_icon/:style/small_icon.:extension',
                     path: ':rails_root/public/files/effects/:id/small_icon/:style/small_icon.:extension'
@@ -39,6 +42,11 @@ class Effect < ActiveRecord::Base
   validates_attachment_content_type :small_icon, :small_icon_2, :large_icon, :large_icon_2,
   content_type: /\Aimage\/.*\Z/
   scope :avaliable, -> { joins(:collection).where('collections.hide = false').where(hide: false) }
+
+
+  cache_invalidatable jpeg_attachments: %w(small_icon small_icon_2 large_icon large_icon_2),
+                      other_attachments: %w(assets_ios assets_android page_for_printing xml dat)
+
 
   def size
     small_icon_size + small_icon_2_size + large_icon_size + large_icon_2_size +
