@@ -20,7 +20,7 @@ set :puma_worker_timeout, nil
 set :puma_init_active_record, true  # Change to false when not using ActiveRecord
 
 ## Linked Files & Directories (Default None):
-set :linked_files, %w{config/database.yml config/secrets.yml}
+set :linked_files, %w{config/database.yml config/secrets.yml config/puma.rb}
 set :linked_dirs,  %w{log geo tmp/pids tmp/cache tmp/sockets vendor/bundle public/files public/certificates}
 set :rbenv_map_bins, %w{rake gem bundle ruby rails sidekiq sidekiqctl}
 
